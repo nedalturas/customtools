@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <!-- Load jQuery First -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Load Fomantic UI CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
+
+  <!-- Load Fomantic UI JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script>
+
+  <!-- Load Clipboard JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+</head>
+
+<body>
+  <main class="ui container">
+    
+<div class="ui secondary menu">
+  <a href="/" class="active item">Home</a>
+  <a href="/formatter/" class=" item">Frmttr</a>
+  <a href="/na-req/" class=" item">NA</a>
+</div>
+
+<h1>Home</h1>
+
+
+  </main>
+
+<script>
+  let clipboard = new ClipboardJS('.btn');
+
+  clipboard.on('success', function(e) {
+      console.info('Action:', e.action);
+      console.info('Text:', e.text);
+      console.info('Trigger:', e.trigger);
+
+      e.clearSelection();
+  });
+
+  clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+  });
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+---
+titlte: Requester
+layout: base.njk
+---
+
+{% include "navbar.njk" %}
+
+<style>
+
+#button_group{
+  margin-top: 1em;
+}
+
+</style>
+
+<h1>NA-req</h1>
+
+<form action="" id="template_form" class="ui small form">
+      
+  <div class="field">
+    <label>Location:</label>
+    <textarea id="location_value" rows="3" placeholder="Enter Address"></textarea>
+  </div>
+  
+  <div class="field">
+    <label for="service_detail">Service Type</label>
+    <textarea id="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
+  </div>
+
+  <div class="inline fields">
+    <label >Today?</label>
+    <div class="field">
+      <div class="ui radio checkbox checked">
+        <input type="radio" id="today_yes" name="check_date" checked onchange="checkToday()" tabindex="0" >
+        <label>Yes</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="today_no" name="check_date"  onchange="checkToday()" tabindex="0" >
+        <label>No</label>
+      </div>
+    </div>
+  </div>  
+
+  <div class="inline fields">
+    <label >Soonest</label>
+    <div class="field">
+      <div class="ui radio checkbox checked">
+        <input type="radio" id="soonest_yes" name="check_date" checked onchange="checkSoonest()" tabindex="0" >
+        <label>Yes</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input type="radio" id="soonest_no" name="check_date"  onchange="checkSoonest()" tabindex="0" >
+        <label>No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <label>Date</label>
+      <div class="ui calendar" id="date_calendar">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input type="text" placeholder="Date" id="date_value">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Time</label>
+      <div class="ui calendar" id="time_calendar">
+        <div class="ui input left icon">
+          <i class="time icon"></i>
+          <input type="text" placeholder="Time" id="time_value">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two ui buttons" >
+    
+    <button
+      type="button"
+      id="showValueBtn"
+      class="ui button"
+      onClick="showValues()"
+    >
+      Format
+    </button>
+    <button type="button" class="ui button negative" onclick="clearForm()">Clear</button>
+
+  </div>
+</form>
+
+<div id="displayReq_value" class="ui message">
+
+</div>
+
+<button class="ui button btn" data-clipboard-target="#displayReq_value">
+    <i class="ui icon clipboard"></i>Copy to Clipboard
+</button>
+
+<script defer>
+
+  $('#date_calendar')
+  .calendar({
+    type: 'date'
+  });
+
+  $('#time_calendar')
+  .calendar({
+    type: 'time'
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("today_yes").checked = true; // Set "Yes" as default
+      checkToday(); // Initialize default state
+  });
+
+  function showValues() {
+  const locationVal = document.getElementById('location_value').value.trim();
+  const serviceDetail = document.getElementById('service_detail').value.trim();
+  const dateVal = document.getElementById('date_value').value.trim();
+  const timeVal = document.getElementById('time_value').value.trim();
+
+  const today = new Date();
+  const selectedDate = new Date(dateVal);
+
+  let formattedDate = selectedDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  let message = "Possible on " + formattedDate + " at " + timeVal +"?";
+
+  if (selectedDate.toDateString() === today.toDateString()) {
+    message = "Possible today at " + timeVal +"?";
+  } else {
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    if (selectedDate.toDateString() === tomorrow.toDateString()) {
+      message = "Possible tomorrow at " + timeVal +"?";
+    }
+  }
+
+  document.getElementById('displayReq_value').innerHTML = 
+    `${locationVal.replace(/\n/g, "<br>")}<br><br>
+    ${serviceDetail.replace(/\n/g, "<br>")}<br><br>
+    <strong>${message}</strong>`;
+}
+  
+  function clearForm() {
+    document.getElementById('template_form').reset();
+    document.getElementById('displayReq_value').innerText = '';
+  }
+
+  function checkToday() {
+    const today = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    const isToday = document.getElementById("today_yes").checked;
+    const dateInput = document.getElementById("date_value");
+
+    if (isToday) {
+        dateInput.value = today; // Replace value instead of appending
+        dateInput.disabled = true;
+    } else {
+        dateInput.value = ""; // Clear value when switching to "No"
+        dateInput.disabled = false;
+    }
+}
+
+
+</script>
