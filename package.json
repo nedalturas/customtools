@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "eleventy --serve",
-  "build": "eleventy"
-},
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nedalturas/customtools.git"
