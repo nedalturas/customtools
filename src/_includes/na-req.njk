@@ -1,13 +1,4 @@
 
-
-<style>
-
-#button_group{
-  margin-top: 1em;
-}
-
-</style>
-
 <h1>NA-req</h1>
 
 <form action="" id="template_form" class="ui small form">
@@ -23,7 +14,7 @@
   </div>
 
   <div class="inline fields">
-    <label >Today?</label>
+    <label>Today?</label>
     <div class="field">
       <div class="ui radio checkbox checked">
         <input type="radio" id="today_yes" name="check_date" checked onchange="checkToday()" tabindex="0" >
@@ -149,28 +140,28 @@
     <strong>${message}</strong>`;
 }
   
-  function clearForm() {
-    document.getElementById('template_form').reset();
-    document.getElementById('displayReq_value').innerText = '';
-  }
+function clearForm() {
+  document.getElementById('template_form').reset();
+  document.getElementById('displayReq_value').innerText = '';
+}
 
   function checkToday() {
-    const today = new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+  const today = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+  });
 
-    const isToday = document.getElementById("today_yes").checked;
-    const dateInput = document.getElementById("date_value");
+  const isToday = document.getElementById("today_yes").checked;
+  const dateInput = document.getElementById("date_value");
 
-    if (isToday) {
-        dateInput.value = today; // Replace value instead of appending
-        dateInput.disabled = true;
-    } else {
-        dateInput.value = ""; // Clear value when switching to "No"
-        dateInput.disabled = false;
-    }
+  if (isToday) {
+      dateInput.value = today; // Replace value instead of appending
+      dateInput.disabled = true;
+  } else {
+      dateInput.value = ""; // Clear value when switching to "No"
+      dateInput.disabled = false;
+  }
 }
 
 

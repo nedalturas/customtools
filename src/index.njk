@@ -3,6 +3,21 @@ title: Home
 layout: base.njk
 ---
 
+{% include "navbar.njk" %}
+<div class="ui pointing menu" style="margin-top: 5em">
+    <a class="item{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
+    <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
 
-<h1>Home</h1>
+</div>
 
+<div class="ui tab segment{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
+    {% include "formatter.njk" %}
+</div>
+
+<div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
+    {% include "na-req.njk" %}
+</div>
+
+<script>
+    $('.menu .item').tab();
+</script>
