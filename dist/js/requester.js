@@ -8,7 +8,7 @@ $('#time_calendar')
         type: 'time'
     });
 
-function showValues() {
+function showReqValues() {
     const locationVal = document.getElementById('location_value').value.trim();
     const serviceDetail = document.getElementById('service_detail').value.trim();
     const dateVal = document.getElementById('date_value').value.trim();
@@ -43,7 +43,7 @@ function showValues() {
 }
 
 function clearForm() {
-    document.getElementById('template_form').reset();
+    document.getElementById('template_request_form').reset();
     document.getElementById('displayReq_value').innerText = '';
 }
 

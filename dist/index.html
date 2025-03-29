@@ -17,6 +17,11 @@
 
   <!-- Load Clipboard JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+
+
+<script  src="js/formatter.js"></script>
+<script  src="js/requester.js"></script>
+
 </head>
 
 <body>
@@ -119,16 +124,12 @@ select {
     <i class="ui icon clipboard"></i>Copy to Clipboard
     </button>
 
-<script src="js/formatter.js">
 
- 
-
-</script>
 </div>
 <div class="ui tab segment active " data-tab="requester">
     <h1>NA-req</h1>
 
-<form action="" id="template_form" class="ui small form">
+<form action="" id="template_request_form" class="ui small form">
       
   <div class="field">
     <label>Location:</label>
@@ -200,7 +201,7 @@ select {
       type="button"
       id="showValueBtn"
       class="ui button"
-      onClick="showValues()"
+      onClick="showReqValues()"
     >
       Format
     </button>
@@ -218,17 +219,18 @@ select {
 </button>
 
 
-<script src="js/requester.js">
 
-</script>
 </div>
+
+
 <script>
     $(document).ready(function () {
         $('.ui.dropdown').dropdown();
+    $('.menu .item').tab();
+
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
     });
-    $('.menu .item').tab();
    
 </script>
   </main>

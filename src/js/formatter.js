@@ -1,8 +1,5 @@
-$(document).ready(function () {
-    $('.ui.dropdown').dropdown();
-});
 
-  function showValues() {
+function showValues() {
   const refNum = document.getElementById('reference_number').value;
   const fullName = document.getElementById('full_name').value;
   const phoneNum = document.getElementById('phone_number').value;
@@ -21,7 +18,7 @@ $(document).ready(function () {
 }
 
 function clearForm() {
-  document.getElementById('ref_value').reset($);
+  document.getElementById('template_form').reset();
   document.getElementById('display_value').innerText = '';
 }
 
