@@ -31,13 +31,10 @@
 
   <main class="ui container">
     
-
 <div class="ui pointing menu" style="margin-top: 5em">
     <a class="item" data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
-
 </div>
-
 <div class="ui tab segment" data-tab="formatter">
     
 <h1>Cx info formatter</h1>
@@ -70,6 +67,7 @@ select {
 }
 
 </style>
+
 <form action="" id="template_form" class="ui small form">
 
       
@@ -121,38 +119,12 @@ select {
     <i class="ui icon clipboard"></i>Copy to Clipboard
     </button>
 
-<script>
+<script src="js/formatter.js">
 
-  $(document).ready(function () {
-      $('.ui.dropdown').dropdown();
-  });
-
-    function showValues() {
-    const refNum = document.getElementById('reference_number').value;
-    const fullName = document.getElementById('full_name').value;
-    const phoneNum = document.getElementById('phone_number').value;
-    const concernSelect = document.getElementById('concern_select').value;
-
-    console.log('Ref Number:', refNum);
-    console.log('Full Name:', fullName);
-    console.log('Phone Number:', phoneNum);
-    console.log('Concern:', concernSelect);
-
-    // Display values in the UI
-    document.getElementById('ref_value').innerText = `Reference Number: ${refNum}`;
-
-    document.getElementById('display_value').innerText =
-      `Full Name: ${fullName}\nPhone Number: ${phoneNum}\nConcern: ${concernSelect}`;
-  }
-
-  function clearForm() {
-    document.getElementById('template_form').reset();
-    document.getElementById('display_value').innerText = '';
-  }
+ 
 
 </script>
 </div>
-
 <div class="ui tab segment active " data-tab="requester">
     <h1>NA-req</h1>
 
@@ -245,87 +217,19 @@ select {
     <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
 
-<script defer>
 
-  $('#date_calendar')
-  .calendar({
-    type: 'date'
-  });
-
-  $('#time_calendar')
-  .calendar({
-    type: 'time'
-  });
-
-  document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("today_yes").checked = true; // Set "Yes" as default
-      checkToday(); // Initialize default state
-  });
-
-  function showValues() {
-  const locationVal = document.getElementById('location_value').value.trim();
-  const serviceDetail = document.getElementById('service_detail').value.trim();
-  const dateVal = document.getElementById('date_value').value.trim();
-  const timeVal = document.getElementById('time_value').value.trim();
-
-  const today = new Date();
-  const selectedDate = new Date(dateVal);
-
-  let formattedDate = selectedDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
-  let message = "Possible on " + formattedDate + " at " + timeVal +"?";
-
-  if (selectedDate.toDateString() === today.toDateString()) {
-    message = "Possible today at " + timeVal +"?";
-  } else {
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
-
-    if (selectedDate.toDateString() === tomorrow.toDateString()) {
-      message = "Possible tomorrow at " + timeVal +"?";
-    }
-  }
-
-  document.getElementById('displayReq_value').innerHTML = 
-    `${locationVal.replace(/\n/g, "<br>")}<br><br>
-    ${serviceDetail.replace(/\n/g, "<br>")}<br><br>
-    <strong>${message}</strong>`;
-}
-  
-function clearForm() {
-  document.getElementById('template_form').reset();
-  document.getElementById('displayReq_value').innerText = '';
-}
-
-  function checkToday() {
-  const today = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-  });
-
-  const isToday = document.getElementById("today_yes").checked;
-  const dateInput = document.getElementById("date_value");
-
-  if (isToday) {
-      dateInput.value = today; // Replace value instead of appending
-      dateInput.disabled = true;
-  } else {
-      dateInput.value = ""; // Clear value when switching to "No"
-      dateInput.disabled = false;
-  }
-}
-
+<script src="js/requester.js">
 
 </script>
 </div>
-
 <script>
+    $(document).ready(function () {
+        $('.ui.dropdown').dropdown();
+        document.getElementById("today_yes").checked = true; // Set "Yes" as default
+        checkToday(); // Initialize default state
+    });
     $('.menu .item').tab();
+   
 </script>
   </main>
 
