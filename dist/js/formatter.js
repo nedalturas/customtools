@@ -17,7 +17,7 @@ function showValues() {
     `Full Name: ${fullName}\nPhone Number: ${phoneNum}\nConcern: ${concernSelect}`;
 }
 
-function clearForm() {
+function clearConverterForm() {
   document.getElementById('template_form').reset();
   document.getElementById('display_value').innerText = '';
 }
