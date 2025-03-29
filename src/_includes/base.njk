@@ -4,6 +4,9 @@
  {% include "head.njk" %}
 
 <body>
+
+  {% include "navbar.njk" %}
+
   <main class="ui container">
     {{ content | safe }}
   </main>
@@ -17,7 +20,7 @@
       console.info('Trigger:', e.trigger);
 
       e.clearSelection();
-  });   
+  });
 
   clipboard.on('error', function(e) {
     console.error('Action:', e.action);

@@ -3,25 +3,6 @@ title: Home
 layout: base.njk
 ---
 
-{% include "navbar.njk" %}
 
+<h1>Home</h1>
 
-<div class="ui pointing secondary menu">
-    <a class="item" data-tab="formatter">Formatter</a>
-    <a class="item" data-tab="requester">Requester</a>
-</div>
-
-
-<div class="ui tab segment" data-tab="formatter">
-    {% include "formatter.njk" %}
-</div>
-
-<div class="ui tab segment" data-tab="requester">
-    {% include "na-req.njk" %}
-</div>
-
-<script>
-    $(document).ready(function () {
-        $('.menu .item').tab();
-    });
-</script>

@@ -20,18 +20,29 @@
 </head>
 
 <body>
+
+  <div class="ui borderless top fixed menu">
+    <div class="ui container">
+      <div class="header item">Custom Blade</div>
+      <div class="right menu">
+        <a href="/" class=" item">Home</a>
+        <a href="/formatter/" class="active item">Frmttr</a>
+        <a href="/na-req/" class=" item">NA</a>
+      </div>
+    </div>
+</div>
+
   <main class="ui container">
     
-<div class="ui secondary menu">
-  <a href="/" class=" item">Home</a>
-  <a href="/formatter/" class="active item">Frmttr</a>
-  <a href="/na-req/" class=" item">NA</a>
-</div>
 
 
 <h1>Cx info formatter</h1>
 
 <style>
+
+h1{
+  margin-top: 3em;
+}
 
 input[type='text'],
 input[type='number'],
@@ -59,11 +70,9 @@ select {
 }
 
 </style>
-<div class="ui bottom attached active tab segment">
 
-  <h1>Tab for formatter</h1>
+<h1>CX Note formatter</h1>
 
-</div>
 <form action="" id="template_form" class="ui small form">
 
       
@@ -156,7 +165,7 @@ select {
       console.info('Trigger:', e.trigger);
 
       e.clearSelection();
-  });   
+  });
 
   clipboard.on('error', function(e) {
     console.error('Action:', e.action);
