@@ -41,6 +41,7 @@
 
   <main class="ui container">
     
+
 <div class="ui stackable two column divided grid" style="margin-top: 4em; position: relative;">
     
     <div class="row">
@@ -62,11 +63,14 @@
         </div>
     </div>
 </div>
+
 <div class="ui pointing menu" style="margin-top: 5em">
     <a class="item" data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
-    <a class="item" data-tab="translator">Translator</a>
+    <a class="item" data-tab="addons">Addons</a>
+    <a class="item" data-tab="break_calculator">Break Calculator</a>
 </div>
+
 <div class="ui tab segment" data-tab="formatter">
     
 <h1>Cx info formatter</h1>
@@ -248,11 +252,51 @@ select {
 
 
 </div>
-<div class="ui tab segment active " data-tab="translator">
-    <h1>Translator</h1>
+<div class="ui tab segment active " data-tab="break_calculator">
+    <h1>Break Calculator</h1>
 
-<iframe src="https://translate.google.com/" width="100%" height="500px" frameborder="0"></iframe>
 </div>
+
+<div class="ui tab segment active " data-tab="addons">
+    <h1>Addons</h1>
+<table class="ui striped selectable table">
+  <thead>
+    <tr>
+      <th class="four wide">Name</th>
+      <th>Duration</th>
+      <th>Max Unit Purchase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Name">Balcony Cleaning</td>
+      <td data-label="Name">15</td>
+      <td data-label="Name">5</td>
+    </tr>
+    <tr>
+      <td data-label="Name">Cupboard Cleaning</td>
+      <td data-label="Name">45</td>
+      <td data-label="Name">5</td>
+    </tr>
+    <tr>
+      <td data-label="Name">Ironing and Folding</td>
+      <td data-label="Name">30</td>
+      <td data-label="Name">5</td>
+    </tr>
+    <tr>
+      <td data-label="Name">Fridge Cleaning</td>
+      <td data-label="Name">45</td>
+      <td data-label="Name">5</td>
+    </tr>
+    <tr>
+      <td data-label="Name">Wardrobe Cleaning</td>
+      <td data-label="Name">45</td>
+      <td data-label="Name">5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 <script>
     $(document).ready(function () {
         const {DateTime} = luxon;

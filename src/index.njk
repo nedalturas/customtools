@@ -3,21 +3,30 @@ title: Home
 layout: base.njk
 ---
 
+{# Date Time  #}
 {% include "datetime.njk"%}
+
 <div class="ui pointing menu" style="margin-top: 5em">
     <a class="item{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
     <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
-    <a class="item{% if tab == 'translator' %} active{% endif %}" data-tab="translator">Translator</a>
+    <a class="item{% if tab == 'addons' %} active{% endif %}" data-tab="addons">Addons</a>
+    <a class="item{% if tab == 'break_calculator' %} active{% endif %}" data-tab="break_calculator">Break Calculator</a>
 </div>
+
 <div class="ui tab segment{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
     {% include "formatter.njk" %}
 </div>
 <div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
     {% include "na-req.njk" %}
 </div>
-<div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="translator">
-    {% include "translator.njk" %}
+<div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="break_calculator">
+    {% include "break_calculator.njk" %}
 </div>
+
+<div class="ui tab segment active {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
+    {% include "addons.njk" %}
+</div>
+
 <script>
     $(document).ready(function () {
         const {DateTime} = luxon;
