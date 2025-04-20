@@ -1,12 +1,3 @@
-$('#date_calendar')
-    .calendar({
-        type: 'date'
-    });
-    
-$('#time_calendar')
-    .calendar({
-        type: 'time'
-    });
 
 function showReqValues() {
     const locationVal = document.getElementById('location_value').value.trim();
@@ -65,3 +56,4 @@ function checkToday() {
         dateInput.disabled = false;
     }
 }
+
