@@ -2,28 +2,7 @@
 title: Home
 layout: base.njk
 ---
-
-<div class="ui two tiny statistics" style="margin-top: 4em">
-    {% set now = "2025-04-20T12:00:00" %}
-
-    <div class="ui  statistic">
-        <div class="value">
-          {{ now | formatInZone("Asia/Dubai") }}  
-        </div>
-        <div class="label">
-            Dubai 
-        </div>
-    </div>
-    <div class="statistic">
-        <div class="value">
-          {{ now | formatInZone("Asia/Manila") }}
-        </div>
-        <div class="label">
-            Philippines 
-        </div>
-    </div>
-</div>
-
+{% include "datetime.njk"%}
 
 <div class="ui pointing menu" style="margin-top: 5em">
 
@@ -42,15 +21,18 @@ layout: base.njk
     {% include "translator.njk" %}
 </div>
 
-<script>
+<script >
+
     $(document).ready(function () {
+
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('#date_calendar').calendar({type: 'date'});
         $('#time_calendar').calendar({type: 'time'});
-        $('.ui.sticky').sticky()
-;
+        $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
+        updateClocks(); 
     });
+
 </script>

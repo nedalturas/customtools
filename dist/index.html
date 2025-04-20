@@ -18,15 +18,20 @@
   <!-- Load Clipboard JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 
+  <!-- Load Luxon -->
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+
 
 <script  src="js/formatter.js"></script>
 <script  src="js/requester.js"></script>
+<script  src="js/datetime.js"></script>
+
 
 </head>
 
 <body>
 
-  <div class="ui inverted menu borderless sticky" style="justify-content: center;">
+  <div class="ui inverted menu borderless sticky" style="justify-content: center; border-radius: 0;">
     <div class="header item">
         Customblade
     </div>
@@ -35,26 +40,23 @@
 
 
   <main class="ui container">
-    
-<div class="ui two tiny statistics" style="margin-top: 4em">
-    
-
+    <div class="ui two mini statistics" style="margin-top: 4em">
     <div class="ui  statistic">
-        <div class="value">
-          Apr 20, 2025, 12:00 PM  
+        <div class="value" id="dubai-time">
         </div>
         <div class="label">
             Dubai 
         </div>
     </div>
+    
     <div class="statistic">
-        <div class="value">
-          Apr 20, 2025, 4:00 PM
+        <div class="value" id="ph-time">
         </div>
         <div class="label">
             Philippines 
         </div>
     </div>
+   
 </div>
 
 
@@ -252,17 +254,20 @@ select {
 <iframe src="https://translate.google.com/" width="100%" height="500px" frameborder="0"></iframe>
 </div>
 
-<script>
+<script >
+
     $(document).ready(function () {
+
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('#date_calendar').calendar({type: 'date'});
         $('#time_calendar').calendar({type: 'time'});
-        $('.ui.sticky').sticky()
-;
+        $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
+        updateClocks(); 
     });
+
 </script>
   </main>
 
