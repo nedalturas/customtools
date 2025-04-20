@@ -40,32 +40,32 @@
 
 
   <main class="ui container">
-    <div class="ui two mini statistics" style="margin-top: 4em">
-    <div class="ui  statistic">
-        <div class="value" id="dubai-time">
-        </div>
-        <div class="label">
-            Dubai 
-        </div>
-    </div>
     
-    <div class="statistic">
-        <div class="value" id="ph-time">
+<div class="ui stackable two column divided grid" style="margin-top: 4em; position: relative;">
+    
+    <div class="row">
+        <div class="column">
+            <div class="ui mini fluid statistic">
+                <div class="value" id="dubai-time"></div>
+                <div class="label">
+                    Dubai
+                </div>
+            </div>
         </div>
-        <div class="label">
-            Philippines 
+        <div class="column">
+            <div class="ui mini fluid statistic">
+                <div class="value" id="ph-time"></div>
+                <div class="label">
+                    Philippines
+                </div>
+            </div>
         </div>
     </div>
-   
 </div>
-
-
 <div class="ui pointing menu" style="margin-top: 5em">
-
     <a class="item" data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="translator">Translator</a>
-
 </div>
 <div class="ui tab segment" data-tab="formatter">
     
@@ -253,11 +253,9 @@ select {
 
 <iframe src="https://translate.google.com/" width="100%" height="500px" frameborder="0"></iframe>
 </div>
-
-<script >
-
+<script>
     $(document).ready(function () {
-
+        const {DateTime} = luxon;
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('#date_calendar').calendar({type: 'date'});
@@ -265,9 +263,24 @@ select {
         $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
-        updateClocks(); 
+        function updateClocks() {
+            const now = DateTime.now();
+            const dubaiTime = now.setZone("Asia/Dubai").toFormat("cccc, dd LLL yyyy HH:mm:ss");
+            const phTime = now.setZone("Asia/Manila").toFormat("cccc, dd LLL yyyy HH:mm:ss");
+            document.getElementById("dubai-time").textContent = dubaiTime;
+            document.getElementById("ph-time").textContent = phTime;
+        }
+        // Sync to the start of the next second
+        function startClock() {
+            updateClocks();
+            const msToNextSecond = 1000 - new Date().getMilliseconds();
+            setTimeout(() => {
+                updateClocks();
+                setInterval(updateClocks, 1000);
+            }, msToNextSecond);
+        }
+        startClock();
     });
-
 </script>
   </main>
 

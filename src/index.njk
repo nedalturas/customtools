@@ -2,14 +2,12 @@
 title: Home
 layout: base.njk
 ---
+
 {% include "datetime.njk"%}
-
 <div class="ui pointing menu" style="margin-top: 5em">
-
     <a class="item{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
     <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
     <a class="item{% if tab == 'translator' %} active{% endif %}" data-tab="translator">Translator</a>
-
 </div>
 <div class="ui tab segment{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
     {% include "formatter.njk" %}
@@ -20,11 +18,9 @@ layout: base.njk
 <div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="translator">
     {% include "translator.njk" %}
 </div>
-
-<script >
-
+<script>
     $(document).ready(function () {
-
+        const {DateTime} = luxon;
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
         $('#date_calendar').calendar({type: 'date'});
@@ -32,7 +28,22 @@ layout: base.njk
         $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
-        updateClocks(); 
+        function updateClocks() {
+            const now = DateTime.now();
+            const dubaiTime = now.setZone("Asia/Dubai").toFormat("cccc, dd LLL yyyy HH:mm:ss");
+            const phTime = now.setZone("Asia/Manila").toFormat("cccc, dd LLL yyyy HH:mm:ss");
+            document.getElementById("dubai-time").textContent = dubaiTime;
+            document.getElementById("ph-time").textContent = phTime;
+        }
+        // Sync to the start of the next second
+        function startClock() {
+            updateClocks();
+            const msToNextSecond = 1000 - new Date().getMilliseconds();
+            setTimeout(() => {
+                updateClocks();
+                setInterval(updateClocks, 1000);
+            }, msToNextSecond);
+        }
+        startClock();
     });
-
 </script>
