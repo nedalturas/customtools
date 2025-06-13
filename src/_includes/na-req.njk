@@ -2,16 +2,20 @@
 
 <form action="" id="template_request_form" class="ui small form">
       
-  <div class="field">
-    <label>Location:</label>
-    <textarea id="location_value" rows="3" placeholder="Enter Address"></textarea>
-  </div>
-  
-  <div class="field">
-    <label for="service_detail">Service Type</label>
-    <textarea id="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
-  </div>
+  <div class="ui two fields">
 
+      <div class="field">
+        <label>Location:</label>
+        <textarea id="location_value" rows="3" placeholder="Enter Address"></textarea>
+      </div>
+  
+      <div class="field">
+          <label for="service_detail">Service Type</label>
+          <textarea id="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
+        </div>
+  </div>  
+  
+  
 
   <div class="inline fields">
     <label>Today?</label>
@@ -29,22 +33,7 @@
     </div>
   </div>  
 
-  <div class="inline fields">
-    <label >Soonest</label>
-    <div class="field">
-      <div class="ui radio checkbox checked">
-        <input type="radio" id="soonest_yes" name="check_date" checked onchange="checkSoonest()" tabindex="0" >
-        <label>Yes</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" id="soonest_no" name="check_date"  onchange="checkSoonest()" tabindex="0" >
-        <label>No</label>
-      </div>
-    </div>
-  </div>
-
+ 
   <div class="two fields">
     <div class="field">
       <label>Date</label>
