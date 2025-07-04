@@ -10,7 +10,7 @@ layout: base.njk
     <a class="item{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
     <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
     <a class="item{% if tab == 'addons' %} active{% endif %}" data-tab="addons">Addons</a>
-    <a class="item{% if tab == 'break_calculator' %} active{% endif %}" data-tab="break_calculator">Break Calculator</a>
+    <a class="item{% if tab == 'compensator' %} active{% endif %}" data-tab="compensator">Compensator</a>
 </div>
 
 <div class="ui tab segment{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
@@ -19,12 +19,12 @@ layout: base.njk
 <div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
     {% include "na-req.njk" %}
 </div>
-<div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="break_calculator">
-    {% include "break_calculator.njk" %}
-</div>
-
 <div class="ui tab segment active {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
     {% include "addons.njk" %}
+</div>
+
+<div class="ui tab segment active {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
+    {% include "compensator.njk" %}
 </div>
 
 <script>
