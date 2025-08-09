@@ -12,6 +12,9 @@
   <!-- Load Fomantic UI CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
 
+  <!-- Load Fomantic UI CSS -->
+  <link rel="stylesheet" href="css/main.css">
+
   <!-- Load Fomantic UI JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script>
 
@@ -22,10 +25,10 @@
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
 
 
-<script  src="js/formatter.js"></script>
-<script  src="js/requester.js"></script>
-<script  src="js/datetime.js"></script>
-<script  src="js/compensator.js"></script>
+  <script src="js/formatter.js"></script>
+  <script src="js/requester.js"></script>
+  <script src="js/datetime.js"></script>
+  <script src="js/compensator.js"></script>
 
 
 </head>
@@ -44,8 +47,8 @@
     
 
 
-<div class="ui top attached tabular menu"> <a class="item"
-        data-tab="formatter">Formatter</a>
+<div class="ui top attached tabular menu"> 
+    <a class="item" data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
     <a class="item" data-tab="compensator">Compensator</a>
@@ -54,88 +57,62 @@
 <div class="ui bottom attached segment">
 
     <div class="ui tab active " data-tab="formatter">
-        
-<h1>Cx info formatter</h1>
+        <link rel="stylesheet" href="css/formatter.css">
 
-<style>
-
-input[type='text'],
-input[type='number'],
-select {
-  margin-bottom: 1em;
-  width: 100%; /* Optional: makes the inputs consistent in size */
-  box-sizing: border-box; /* Ensures padding doesn’t affect width */
-}
-
-#button_group{
-  margin-top: 1em;
-}
-
-#display_value {
-  margin-top: 1em;
-}
-
-
-input[type='text'],
-input[type='number'],
-select {
-  margin-bottom: 1em;
-  width: 100%; /* Optional: makes the inputs consistent in size */
-  box-sizing: border-box; /* Ensures padding doesn’t affect width */
-}
-
-</style>
+<h1>Formatter</h1>
 
 <form action="" id="template_form" class="ui small form">
 
-      
-      <div class="field">
-        <label for="reference_number">Reference Number</label>
-        <input type="text" id="reference_number" name="Reference Number" />
-      </div>
+  
+  <div class="field">
+    <label for="reference_number">Reference Number</label>
+    <input type="text" id="reference_number" name="Reference Number" />
+  </div>
 
-      <div class="field">
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="Full Name" />
-      </div>
+  
+  <div class="field">
+    <label for="full_name">Full Name:</label>
+    <input type="text" id="full_name" name="Full Name" />
+  </div>
 
-      <div class="field">
-        <label for="phone_number">Phone Number:</label>
-        <input type="number" id="phone_number" name="Phone Numberr" />
-      </div>        
-      
-      <div class="field">
-        
-        <label for="concern_select">Concern</label>
-        <select class="ui fluid dropdown" name="Concern" id="concern_select">
-          <option value="OMT NA">OMT NA</option>
-          <option value="other">Other</option>
-        </select>
+  
+  <div class="field">
+    <label for="phone_number">Phone Number:</label>
+    <input type="number" id="phone_number" name="Phone Numberr" />
+  </div>
 
-      </div>
+  <div class="field">
 
-      <div class="two ui buttons" id="button_group">
-        
-        <button
-          type="button"
-          id="showValueBtn"
-          class="ui button"
-          onClick="showValues()"
-        >
-          Convert
-        </button>
-        <button type="button" class="ui button negative" onclick="clearConverterForm()">Clear</button>
+    <label for="concern_select">Concern</label>
+    <select class="ui fluid dropdown" name="Concern" id="concern_select">
+      <option value="OMT NA">OMT NA</option>
+      <option value="other">Other</option>
+    </select>
 
-        </div>
-    </form>
+  </div>
 
-      <div id="ref_value" class="ui message"></div>
+  <div class="two ui buttons" id="button_group">
 
-      <div id="display_value" class="ui message"></div>
-      
-    <button class="ui button btn" data-clipboard-target="#display_value">
-    <i class="ui icon clipboard"></i>Copy to Clipboard
+    <button type="button" id="showValueBtn" class="ui button" onClick="showValues()">
+      Convert
     </button>
+    <button type="button" class="ui button negative" onclick="clearConverterForm()">Clear</button>
+
+  </div>
+</form>
+
+
+
+<div class="ui basic segments" id="ui_feedback">
+  <p id="ref_value">Reference:</p>
+  <p id="display_value">Reference:</p>
+</div> 
+
+
+
+<button class="ui primary button btn" data-clipboard-target="#display_value">
+  <i class="ui icon clipboard"></i>Copy to Clipboard
+</button>
 
 
     </div>

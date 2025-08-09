@@ -1,0 +1,26 @@
+
+input[type='text'],
+input[type='number'],
+select {
+  margin-bottom: 1em;
+  width: 100%; /* Optional: makes the inputs consistent in size */
+  box-sizing: border-box; /* Ensures padding doesn’t affect width */
+}
+
+#button_group{
+  margin-top: 1em;
+}
+
+#display_value {
+  margin-top: 1em;
+}
+
+
+input[type='text'],
+input[type='number'],
+select {
+  margin-bottom: 1em;
+  width: 100%; /* Optional: makes the inputs consistent in size */
+  box-sizing: border-box; /* Ensures padding doesn’t affect width */
+}
+

@@ -1,5 +1,6 @@
 
 function showValues() {
+  const uiFeed = document.getElementById('ui_feedback');
   const refNum = document.getElementById('reference_number').value;
   const fullName = document.getElementById('full_name').value;
   const phoneNum = document.getElementById('phone_number').value;
@@ -10,15 +11,13 @@ function showValues() {
   console.log('Phone Number:', phoneNum);
   console.log('Concern:', concernSelect);
 
-  // Display values in the UI
-  document.getElementById('ref_value').innerText = `Reference Number: ${refNum}`;
-
-  document.getElementById('display_value').innerText =
-    `Full Name: ${fullName}\nPhone Number: ${phoneNum}\nConcern: ${concernSelect}`;
+  refValue = document.getElementById('ref_value').innerHTML = `Reference: ${refNum}`;
+  displayValue = document.getElementById('display_value').innerHTML = `
+  Full Name: ${fullName}\n Phone Number: ${phoneNum}\n Concern: ${concernSelect}
+  `;
 }
 
 function clearConverterForm() {
   document.getElementById('template_form').reset();
-  document.getElementById('display_value').innerText = '';
+  document.getElementById('ref_value').innerHTML = 'Reference: ';
 }
-
