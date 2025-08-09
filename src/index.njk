@@ -5,11 +5,12 @@ layout: base.njk
 
 {# Date Time #}
 {# {% include "datetime.njk"%} #}
-<div class="ui top attached tabular menu" style="margin-top: 4em;"> 
+<div class="ui top attached tabular menu" style="margin-top: 4em;">
     <a class="item{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
     <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
     <a class="item{% if tab == 'addons' %} active{% endif %}" data-tab="addons">Addons</a>
     <a class="item{% if tab == 'compensator' %} active{% endif %}" data-tab="compensator">Compensator</a>
+    <a class="item{% if tab == 'callbacks' %} active{% endif %}" data-tab="callbacks">Callbacks</a>
 </div>
 
 <div class="ui bottom attached segment">
@@ -26,6 +27,10 @@ layout: base.njk
     <div class="ui tab {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
         {% include "compensator.njk" %}
     </div>
+    <div class="ui tab {% if tab == 'callbacks'%} active {% endif %}" data-tab="callbacks">
+        {% include "callbacks.njk" %}
+    </div>
+
 
 </div>
 

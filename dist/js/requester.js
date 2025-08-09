@@ -78,6 +78,4 @@ function checkSoonest(){
         dateInput.disabled = false;
         timeInput.disabled = false;
       }
-
-
 }
