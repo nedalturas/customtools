@@ -4,34 +4,38 @@ function showReqValues() {
     const serviceDetail = document.getElementById('service_detail').value.trim();
     const dateVal = document.getElementById('date_value').value.trim();
     const timeVal = document.getElementById('time_value').value.trim();
-
-    const today = new Date();
-    const selectedDate = new Date(dateVal);
-
-    let formattedDate = selectedDate.toLocaleDateString('en-US', {
+    const isSoonest = document.getElementById('soonest_yes').checked;
+    
+    let message = "Soonest please?"; // Default to soonest
+    
+    if (!isSoonest && dateVal && timeVal) {
+      const today = new Date();
+      const selectedDate = new Date(dateVal);
+      
+      let formattedDate = selectedDate.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-    });
-
-    let message = "Possible on " + formattedDate + " at " + timeVal + "?";
-
-    if (selectedDate.toDateString() === today.toDateString()) {
+      });
+      
+      message = "Possible on " + formattedDate + " at " + timeVal + "?";
+      
+      if (selectedDate.toDateString() === today.toDateString()) {
         message = "Possible today at " + timeVal + "?";
-    } else {
+      } else {
         const tomorrow = new Date();
         tomorrow.setDate(today.getDate() + 1);
-
         if (selectedDate.toDateString() === tomorrow.toDateString()) {
-            message = "Possible tomorrow at " + timeVal + "?";
+          message = "Possible tomorrow at " + timeVal + "?";
         }
+      }
     }
-
+    
     document.getElementById('displayReq_value').innerHTML =
-        `${locationVal.replace(/\n/g, "<br>")}<br><br>
-    ${serviceDetail.replace(/\n/g, "<br>")}<br><br>
-    <strong>${message}</strong>`;
-}
+      `${locationVal.replace(/\n/g, "<br>")}<br><br>
+      ${serviceDetail.replace(/\n/g, "<br>")}<br><br>
+      <strong>${message}</strong>`;
+  }
 
 function clearForm() {
     document.getElementById('template_request_form').reset();
@@ -39,21 +43,41 @@ function clearForm() {
 }
 
 function checkToday() {
-    const today = new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-
     const isToday = document.getElementById("today_yes").checked;
     const dateInput = document.getElementById("date_value");
-
+    
     if (isToday) {
-        dateInput.value = today; // Replace value instead of appending
-        dateInput.disabled = true;
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.value = today;
+      dateInput.disabled = true;
+      
+      // Uncheck soonest when today is selected
+      document.getElementById("soonest_yes").checked = false;
+      document.getElementById("time_value").disabled = false;
     } else {
-        dateInput.value = ""; // Clear value when switching to "No"
-        dateInput.disabled = false;
+      dateInput.value = "";
+      dateInput.disabled = false;
     }
-}
+  }
+function checkSoonest(){
+    const isSoonest = document.getElementById("soonest_yes").checked;
+    const dateInput = document.getElementById("date_value");
+    const timeInput = document.getElementById("time_value");
 
+    if (isSoonest) {
+        // Disable date and time inputs when soonest is selected
+        dateInput.disabled = true;
+        timeInput.disabled = true;
+        dateInput.value = "";
+        timeInput.value = "";
+        
+        // Also uncheck "Today" checkbox
+        document.getElementById("today_yes").checked = false;
+      } else {
+        // Re-enable inputs when soonest is unchecked
+        dateInput.disabled = false;
+        timeInput.disabled = false;
+      }
+
+
+}

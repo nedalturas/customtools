@@ -1,39 +1,39 @@
-<h1>NA-req</h1>
+<h1>Request Formatter</h1>
 
 <form action="" id="template_request_form" class="ui small form">
-      
+
   <div class="ui two fields">
 
-      <div class="field">
-        <label>Location:</label>
-        <textarea id="location_value" rows="3" placeholder="Enter Address"></textarea>
-      </div>
-  
-      <div class="field">
-          <label for="service_detail">Service Type</label>
-          <textarea id="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
-        </div>
-  </div>  
-  
-  
+    <div class="field">
+      <label>Location:</label>
+      <textarea id="location_value" rows="3" placeholder="Enter Address"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="service_detail">Service Type</label>
+      <textarea id="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
+    </div>
+  </div>
 
   <div class="inline fields">
     <label>Today?</label>
     <div class="field">
-      <div class="ui radio checkbox checked">
-        <input type="radio" id="today_yes" name="check_date" checked onchange="checkToday()" tabindex="0" >
+      <div class="ui  checkbox checked">
+        <input type="checkbox" id="today_yes" name="check_date" onchange="checkToday()" tabindex="0">
         <label>Yes</label>
       </div>
     </div>
+    <label>Soonest?</label>
     <div class="field">
-      <div class="ui radio checkbox">
-        <input type="radio" id="today_no" name="check_date"  onchange="checkToday()" tabindex="0" >
-        <label>No</label>
+      <div class="ui  checkbox checked">
+        <input type="checkbox" id="soonest_yes" name="check_date" onchange="checkSoonest()" tabindex="0">
+        <label>Yes</label>
       </div>
     </div>
-  </div>  
 
- 
+  </div>
+
+
   <div class="two fields">
     <div class="field">
       <label>Date</label>
@@ -55,14 +55,9 @@
     </div>
   </div>
 
-  <div class="two ui buttons" >
-    
-    <button
-      type="button"
-      id="showValueBtn"
-      class="ui button"
-      onClick="showReqValues()"
-    >
+  <div class="two ui buttons">
+
+    <button type="button" id="showValueBtn" class="ui button" onClick="showReqValues()">
       Format
     </button>
     <button type="button" class="ui button negative" onclick="clearForm()">Clear</button>
@@ -70,13 +65,12 @@
   </div>
 </form>
 
-<div id="displayReq_value" class="ui message">
+<div class="ui basic segments">
+
+  <div id="displayReq_value" class="ui blue segment">
+  </div>
 
 </div>
-
-<button class="ui button btn" data-clipboard-target="#displayReq_value">
-    <i class="ui icon clipboard"></i>Copy to Clipboard
+<button class="ui primary button btn" data-clipboard-target="#displayReq_value">
+  <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
-
-
-{# <script src="js/requester.js"></script> #}
