@@ -8,6 +8,9 @@ select {
 }
 
 #display_value{
+  margin: 0;
+  padding: 0;
+  white-space: normal;
 }
 
 #button_group{
