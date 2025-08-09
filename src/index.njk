@@ -3,37 +3,40 @@ title: Home
 layout: base.njk
 ---
 
-{# Date Time  #}
-{% include "datetime.njk"%}
-
-<div class="ui pointing menu" style="margin-top: 5em">
-    <a class="item{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
+{# Date Time #}
+{# {% include "datetime.njk"%} #}
+<div class="ui top attached tabular menu"> <a class="item{% if tab == 'formatter' %} active{% endif %}"
+        data-tab="formatter">Formatter</a>
     <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
     <a class="item{% if tab == 'addons' %} active{% endif %}" data-tab="addons">Addons</a>
     <a class="item{% if tab == 'compensator' %} active{% endif %}" data-tab="compensator">Compensator</a>
 </div>
 
-<div class="ui tab segment{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
-    {% include "formatter.njk" %}
-</div>
-<div class="ui tab segment active {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
-    {% include "na-req.njk" %}
-</div>
-<div class="ui tab segment active {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
-    {% include "addons.njk" %}
+<div class="ui bottom attached segment">
+
+    <div class="ui tab active {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
+        {% include "formatter.njk" %}
+    </div>
+    <div class="ui tab {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
+        {% include "na-req.njk" %}
+    </div>
+    <div class="ui tab {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
+        {% include "addons.njk" %}
+    </div>
+    <div class="ui tab {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
+        {% include "compensator.njk" %}
+    </div>
+
 </div>
 
-<div class="ui tab segment active {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
-    {% include "compensator.njk" %}
-</div>
 
 <script>
     $(document).ready(function () {
-        const {DateTime} = luxon;
+        const { DateTime } = luxon;
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
-        $('#date_calendar').calendar({type: 'date'});
-        $('#time_calendar').calendar({type: 'time'});
+        $('#date_calendar').calendar({ type: 'date' });
+        $('#time_calendar').calendar({ type: 'time' });
         $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state

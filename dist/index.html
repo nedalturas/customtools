@@ -43,37 +43,18 @@
   <main class="ui container">
     
 
-<div class="ui stackable two column divided grid" style="margin-top: 4em; position: relative;">
-    
-    <div class="row">
-        <div class="column">
-            <div class="ui mini fluid statistic">
-                <div class="value" id="dubai-time"></div>
-                <div class="label">
-                    Dubai
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui mini fluid statistic">
-                <div class="value" id="ph-time"></div>
-                <div class="label">
-                    Philippines
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="ui pointing menu" style="margin-top: 5em">
-    <a class="item" data-tab="formatter">Formatter</a>
+<div class="ui top attached tabular menu"> <a class="item"
+        data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
     <a class="item" data-tab="compensator">Compensator</a>
 </div>
 
-<div class="ui tab segment" data-tab="formatter">
-    
+<div class="ui bottom attached segment">
+
+    <div class="ui tab active " data-tab="formatter">
+        
 <h1>Cx info formatter</h1>
 
 <style>
@@ -157,9 +138,9 @@ select {
     </button>
 
 
-</div>
-<div class="ui tab segment active " data-tab="requester">
-    <h1>NA-req</h1>
+    </div>
+    <div class="ui tab " data-tab="requester">
+        <h1>NA-req</h1>
 
 <form action="" id="template_request_form" class="ui small form">
       
@@ -241,9 +222,9 @@ select {
 
 
 
-</div>
-<div class="ui tab segment active " data-tab="addons">
-    <h1>Addons</h1>
+    </div>
+    <div class="ui tab " data-tab="addons">
+        <h1>Addons</h1>
 <table class="ui striped selectable table">
   <thead>
     <tr>
@@ -280,10 +261,9 @@ select {
     </tr>
   </tbody>
 </table>
-</div>
-
-<div class="ui tab segment active " data-tab="compensator">
-    <h1>Compensator</h1>
+    </div>
+    <div class="ui tab " data-tab="compensator">
+        <h1>Compensator</h1>
 1. Select segment
 2. Select Status
 <form action="" id="template_form" class="ui small form">
@@ -303,15 +283,18 @@ select {
         </select>
     </div>
 </form>
+    </div>
+
 </div>
+
 
 <script>
     $(document).ready(function () {
-        const {DateTime} = luxon;
+        const { DateTime } = luxon;
         $('.ui.dropdown').dropdown();
         $('.menu .item').tab();
-        $('#date_calendar').calendar({type: 'date'});
-        $('#time_calendar').calendar({type: 'time'});
+        $('#date_calendar').calendar({ type: 'date' });
+        $('#time_calendar').calendar({ type: 'time' });
         $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
