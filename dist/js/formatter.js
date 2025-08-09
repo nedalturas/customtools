@@ -12,12 +12,14 @@ function showValues() {
   console.log('Concern:', concernSelect);
 
   refValue = document.getElementById('ref_value').innerHTML = `Reference: ${refNum}`;
-  displayValue = document.getElementById('display_value').innerHTML = `
-  Full Name: ${fullName}\n Phone Number: ${phoneNum}\n Concern: ${concernSelect}
+  displayValue = document.getElementById('display_value').innerText = `
+    Full Name: ${fullName}\n Phone Number: ${phoneNum}\n Concern: ${concernSelect}
   `;
 }
 
 function clearConverterForm() {
   document.getElementById('template_form').reset();
   document.getElementById('ref_value').innerHTML = 'Reference: ';
+  displayValue = document.getElementById('display_value').innerText = `Full Name:\n Phone Number: \n Concern: 
+  `;
 }

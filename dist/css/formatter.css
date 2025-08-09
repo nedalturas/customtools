@@ -7,15 +7,13 @@ select {
   box-sizing: border-box; /* Ensures padding doesn’t affect width */
 }
 
+#display_value{
+  content: '\n';
+}
+
 #button_group{
   margin-top: 1em;
 }
-
-#display_value {
-  margin-top: 1em;
-}
-
-
 input[type='text'],
 input[type='number'],
 select {

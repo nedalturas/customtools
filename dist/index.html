@@ -35,7 +35,8 @@
 
 <body>
 
-  <div class="ui inverted menu borderless sticky" style="justify-content: center; border-radius: 0;">
+  
+<div class="ui inverted menu borderless" style="justify-content: center; border-radius: 0; top: 0; position: sticky; z-index: 1;">
     <div class="header item">
         Customblade
     </div>
@@ -104,9 +105,18 @@
 
 
 <div class="ui basic segments" id="ui_feedback">
-  <p id="ref_value">Reference:</p>
-  <p id="display_value">Reference:</p>
-</div> 
+  <div class="ui segment">
+    <p id="ref_value">Reference:</p>
+  </div>
+
+  <div class="ui segment">
+    <p id="display_value">
+      Full Name: <br>
+      Phone Number: <br>
+      Concern: 
+  </p>
+  </div>
+</div>
 
 
 
