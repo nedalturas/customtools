@@ -46,9 +46,9 @@ class CallbackTimer {
             const hours = parseInt($('#customHours').val()) || 0;
             const minutes = parseInt($('#customMinutes').val()) || 0;
             const seconds = parseInt($('#customSeconds').val()) || 0;
-            
+
             totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
-            
+
             if (totalSeconds <= 0) {
                 alert('Please enter a valid custom time');
                 return;
@@ -106,7 +106,7 @@ class CallbackTimer {
             }
 
             timer.remaining--;
-            
+
             if (timer.remaining <= 0 && !timer.expired) {
                 timer.expired = true;
                 this.startBeeping();
@@ -166,10 +166,10 @@ class CallbackTimer {
             timer.acknowledged = true;
             timer.expired = false;
             clearInterval(this.intervals[timerId]);
-            
+
             // Always check and stop beeping after acknowledging any timer
             this.checkAndStopBeeping();
-            
+
             this.renderTimers();
             this.saveToStorage();
         }
@@ -187,10 +187,10 @@ class CallbackTimer {
         this.timers = this.timers.filter(t => t.id !== timerId);
         clearInterval(this.intervals[timerId]);
         delete this.intervals[timerId];
-        
+
         // Always check and stop beeping after removing any timer
         this.checkAndStopBeeping();
-        
+
         this.renderTimers();
         this.saveToStorage();
     }
@@ -199,17 +199,17 @@ class CallbackTimer {
         const hrs = Math.floor(Math.abs(seconds) / 3600);
         const mins = Math.floor((Math.abs(seconds) % 3600) / 60);
         const secs = Math.abs(seconds) % 60;
-        
+
         let result = '';
         if (hrs > 0) result += `${hrs.toString().padStart(2, '0')}:`;
         result += `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        
+
         return seconds < 0 ? `-${result}` : result;
     }
 
     renderTimers() {
         const listEl = $('#timerList');
-        
+
         if (this.timers.length === 0) {
             listEl.html('<div class="item" style="text-align: center; color: #999;">No active timers</div>');
             return;
@@ -225,23 +225,23 @@ class CallbackTimer {
                 <div class="item timer-item ${isExpired ? 'expired' : ''}" data-timer-id="${timer.id}">
                     <div class="right floated content">
                         ${!timer.acknowledged ? `
-                            <button class="ui ${isExpired ? 'red' : 'green'} button acknowledge-btn" data-timer-id="${timer.id}">
+                            <button class="mini ui ${isExpired ? 'red' : 'green'} button acknowledge-btn" data-timer-id="${timer.id}">
                                 ${isExpired ? 'Acknowledge' : 'Complete'}
                             </button>
                         ` : ''}
-                        <button class="ui red icon button remove-btn" data-timer-id="${timer.id}">
+                        <button class="mini ui red icon button remove-btn" data-timer-id="${timer.id}">
                             <i class="trash icon"></i>
                         </button>
                     </div>
-                    <div class="content">
-                        <div class="header">Ref: ${timer.refNumber}</div>
-                        <div class="description">
+
+                        <a>${timer.refNumber}</a>        
+                    <div class="right floated content">
+                       
                             <div class="ui ${statusClass} label">
                                 <i class="clock icon"></i>
                                 ${statusText}
                             </div>
                             <span class="countdown">${timeDisplay}</span>
-                        </div>
                     </div>
                 </div>
             `;
@@ -264,7 +264,7 @@ class CallbackTimer {
             try {
                 const parsed = JSON.parse(data);
                 const timeDiff = Math.floor((Date.now() - parsed.timestamp) / 1000);
-                
+
                 this.timers = parsed.timers.map(timer => {
                     if (!timer.acknowledged) {
                         timer.remaining -= timeDiff;
@@ -276,7 +276,7 @@ class CallbackTimer {
                 });
 
                 this.renderTimers();
-                
+
                 // Start beeping if any timer is expired
                 const hasExpired = this.timers.some(t => t.expired && !t.acknowledged);
                 if (hasExpired) {
@@ -290,6 +290,6 @@ class CallbackTimer {
 }
 
 // Initialize the timer when DOM is ready
-window.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function () {
     window.timer = new CallbackTimer();
 });
