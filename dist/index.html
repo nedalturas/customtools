@@ -48,7 +48,7 @@
     
 
 
-<div class="mini ui top attached tabular menu" style="margin-top: 4em;">
+<div class="mini ui top attached tabular menu" style="margin-top: 4em; background-color: white;">
     <a class="item" data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
@@ -63,10 +63,10 @@
 
 <h1>Formatter</h1>
 
-<form action="" id="template_form" class="ui small form">
+<form action="" id="template_form" class="ui mini form">
 
   
-  <div class="field">
+  <div class="ui mini field">
     <label for="reference_number">Reference Number</label>
     <input type="text" id="reference_number" name="Reference Number" />
   </div>
@@ -118,14 +118,14 @@
   </div>
 </div>
 
-<button class="ui primary button btn" data-clipboard-target="#display_value">
+<button class="ui mini primary button btn" data-clipboard-target="#display_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
     </div>
     <div class="ui tab " data-tab="requester">
         <h1>Request Formatter</h1>
 
-<form action="" id="template_request_form" class="ui small form">
+<form action="" id="template_request_form" class="ui mini form">
 
   <div class="ui two fields">
 
@@ -180,7 +180,7 @@
     </div>
   </div>
 
-  <div class="two ui buttons">
+  <div class="two mini ui buttons">
 
     <button type="button" id="showValueBtn" class="ui button" onClick="showReqValues()">
       Format
@@ -196,13 +196,13 @@
   </div>
 
 </div>
-<button class="ui primary button btn" data-clipboard-target="#displayReq_value">
+<button class="ui mini primary button btn" data-clipboard-target="#displayReq_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
     </div>
     <div class="ui tab " data-tab="addons">
         <h1>Addons</h1>
-<table class="ui striped selectable table">
+<table class="ui striped selectable small table">
   <thead>
     <tr>
       <th class="four wide">Name</th>
@@ -243,7 +243,7 @@
         <h1>Compensator</h1>
 1. Select segment
 2. Select Status
-<form action="" id="template_form" class="ui small form">
+<form action="" id="template_form" class="ui mini form">
     <div class="field">
         <label for="Customer Segment">Select Segment</label>
         <select class="ui fluid dropdown" name="Customer Segment" id="">
@@ -303,7 +303,7 @@
 </style>
 <div class="timer-container">
 
-    <form class="ui form" id="timerForm">
+    <form class="ui mini form" id="timerForm">
         <div class="fields">
             <div class="four wide field">
                 <label>Reference Number</label>
@@ -336,7 +336,7 @@
                 </div>
             </div>
         </div>
-        <button class="ui primary button" type="submit">Add Timer</button>
+        <button class="ui mini primary button" type="submit">Add Timer</button>
     </form>
 
         <h3 class="ui header">Active Timers</h3>
