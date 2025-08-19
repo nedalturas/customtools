@@ -1,10 +1,13 @@
 <h1>Compensator</h1>
-1. Select segment
-2. Select Status
+
 <form action="" id="template_form" class="ui mini form">
     <div class="field">
+        <label for="Customer Segment">Amount</label>
+        <input type="number">
+    </div>
+    <div class="field">
         <label for="Customer Segment">Select Segment</label>
-        <select class="ui fluid dropdown" name="Customer Segment" id="">
+        <select class="ui fluid dropdown" name="Customer Segment" id="segmentSelect">
             <option value="low_value">Low Value</option>
             <option value="mid_value">Mid Value</option>
             <option value="high_value">High Value</option>
@@ -12,9 +15,13 @@
     </div>
     <div class="field">
         <label for="Select Action">Select Action</label>
-        <select class="ui fluid dropdown" name="Select Action" id="">
+        <select class="ui fluid dropdown" name="Select Action" id="actionSelect">
             <option value="rescheduled">Rescheduled</option>
             <option value="cancelled">Cancelled</option>
         </select>
+    </div>
+    <div class="field">
+        <label for="Customer Segment">Total</label>
+        <input type="number" id="totalView">
     </div>
 </form>
