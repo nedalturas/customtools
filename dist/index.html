@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
@@ -46,9 +45,7 @@
 
   <main class="ui container">
     
-
-
-<div class="mini ui top attached tabular menu" style="margin-top: 4em; background-color: white;">
+<div class="mini ui top attached tabular menu">
     <a class="item" data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
@@ -390,22 +387,23 @@
 </script>
   </main>
 
-<script>
-  let clipboard = new ClipboardJS('.btn');
+  <script>
+    let clipboard = new ClipboardJS('.btn');
 
-  clipboard.on('success', function(e) {
+    clipboard.on('success', function (e) {
       console.info('Action:', e.action);
       console.info('Text:', e.text);
       console.info('Trigger:', e.trigger);
 
       e.clearSelection();
-  });
+    });
 
-  clipboard.on('error', function(e) {
-    console.error('Action:', e.action);
-    console.error('Trigger:', e.trigger);
-  });
-  
-</script>
+    clipboard.on('error', function (e) {
+      console.error('Action:', e.action);
+      console.error('Trigger:', e.trigger);
+    });
+
+  </script>
 </body>
+
 </html>
