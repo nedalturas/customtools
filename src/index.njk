@@ -11,36 +11,29 @@ layout: layout/base.njk
     <a class="item{% if tab == 'callbacks' %} active{% endif %}" data-tab="callbacks">Callbacks</a>
 </div>
 
-<div class="ui bottom attached segment">
 
-    <div class="ui tab active {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
+    <div class="ui bottom attached tab segment {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
         {% include "formatter.njk" %}
     </div>
-    <div class="ui tab {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
+    <div class="ui bottom attached tab segment {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
         {% include "na-req.njk" %}
     </div>
-    <div class="ui tab {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
+    <div class="ui bottom attached tab segment {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
         {% include "addons.njk" %}
     </div>
-    <div class="ui tab {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
+    <div class="ui bottom attached tab segment {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
         {% include "compensator.njk" %}
     </div>
-    <div class="ui tab {% if tab == 'callbacks'%} active {% endif %}" data-tab="callbacks">
+    <div class="ui bottom attached tab segment {% if tab == 'callbacks'%} active {% endif %}" data-tab="callbacks">
         {% include "callbacks.njk" %}
     </div>
 
 
-</div>
 
 
 <script>
     $(document).ready(function () {
         const { DateTime } = luxon;
-        $('.ui.dropdown').dropdown();
-        $('.menu .item').tab();
-        $('#date_calendar').calendar({ type: 'date' });
-        $('#time_calendar').calendar({ type: 'time' });
-        $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
         function updateClocks() {

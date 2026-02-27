@@ -56,9 +56,8 @@
     <a class="item" data-tab="callbacks">Callbacks</a>
 </div>
 
-<div class="ui bottom attached segment">
 
-    <div class="ui tab active " data-tab="formatter">
+    <div class="ui bottom attached tab segment " data-tab="formatter">
         <link rel="stylesheet" href="css/formatter.css">
 
 <h1>Formatter</h1>
@@ -116,7 +115,7 @@
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
     </div>
-    <div class="ui tab " data-tab="requester">
+    <div class="ui bottom attached tab segment " data-tab="requester">
         <h1>Request Formatter</h1>
 
 <form action="" id="template_request_form" class="ui mini form">
@@ -194,7 +193,7 @@
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
     </div>
-    <div class="ui tab " data-tab="addons">
+    <div class="ui bottom attached tab segment " data-tab="addons">
         <h1>Addons</h1>
 <table class="ui striped selectable small table">
   <thead>
@@ -233,7 +232,7 @@
   </tbody>
 </table>
     </div>
-    <div class="ui tab " data-tab="compensator">
+    <div class="ui bottom attached tab segment " data-tab="compensator">
         <h1>Compensator</h1>
 
 <form action="" id="template_form" class="ui mini form">
@@ -262,7 +261,7 @@
     </div>
 </form>
     </div>
-    <div class="ui tab " data-tab="callbacks">
+    <div class="ui bottom attached tab segment " data-tab="callbacks">
         <h1>Callbacks</h1>
 <script src="js/callbacks.js" defer></script>
 <style>
@@ -350,17 +349,11 @@
     </div>
 
 
-</div>
 
 
 <script>
     $(document).ready(function () {
         const { DateTime } = luxon;
-        $('.ui.dropdown').dropdown();
-        $('.menu .item').tab();
-        $('#date_calendar').calendar({ type: 'date' });
-        $('#time_calendar').calendar({ type: 'time' });
-        $('.ui.sticky').sticky();
         document.getElementById("today_yes").checked = true; // Set "Yes" as default
         checkToday(); // Initialize default state
         function updateClocks() {
