@@ -4,7 +4,7 @@ layout: layout/base.njk
 ---
 
 <div class="mini ui top attached tabular menu">
-    <a class="item{% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
+    <a class="item active {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">Formatter</a>
     <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
     <a class="item{% if tab == 'addons' %} active{% endif %}" data-tab="addons">Addons</a>
     <a class="item{% if tab == 'compensator' %} active{% endif %}" data-tab="compensator">Compensator</a>
@@ -12,18 +12,18 @@ layout: layout/base.njk
 </div>
 
 
-<div class="ui bottom attached tab segment {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
-    {% include "formatter.njk" %}
+<div class="ui bottom attached tab segment active {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
+    {% include "partials/formatter.njk" %}
 </div>
 <div class="ui bottom attached tab segment {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
-    {% include "na-req.njk" %}
+    {% include "partials/na-req.njk" %}
 </div>
 <div class="ui bottom attached tab segment {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
-    {% include "addons.njk" %}
+    {% include "partials/addons.njk" %}
 </div>
 <div class="ui bottom attached tab segment {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
-    {% include "compensator.njk" %}
+    {% include "partials/compensator.njk" %}
 </div>
 <div class="ui bottom attached tab segment {% if tab == 'callbacks'%} active {% endif %}" data-tab="callbacks">
-    {% include "callbacks.njk" %}
+    {% include "partials/callbacks.njk" %}
 </div>
