@@ -12,7 +12,7 @@ function showReqValues() {
       const today = new Date();
       const selectedDate = new Date(dateVal);
       
-      let formattedDate = selectedDate.toLocaleDateString('en-US', {
+      let formattedDate = selectedDate.toLocaleDateString('en-PH', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
