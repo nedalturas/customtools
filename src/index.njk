@@ -12,46 +12,18 @@ layout: layout/base.njk
 </div>
 
 
-    <div class="ui bottom attached tab segment {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
-        {% include "formatter.njk" %}
-    </div>
-    <div class="ui bottom attached tab segment {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
-        {% include "na-req.njk" %}
-    </div>
-    <div class="ui bottom attached tab segment {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
-        {% include "addons.njk" %}
-    </div>
-    <div class="ui bottom attached tab segment {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
-        {% include "compensator.njk" %}
-    </div>
-    <div class="ui bottom attached tab segment {% if tab == 'callbacks'%} active {% endif %}" data-tab="callbacks">
-        {% include "callbacks.njk" %}
-    </div>
-
-
-
-
-<script>
-    $(document).ready(function () {
-        const { DateTime } = luxon;
-        document.getElementById("today_yes").checked = true; // Set "Yes" as default
-        checkToday(); // Initialize default state
-        function updateClocks() {
-            const now = DateTime.now();
-            const dubaiTime = now.setZone("Asia/Dubai").toFormat("cccc, dd LLL yyyy HH:mm:ss");
-            const phTime = now.setZone("Asia/Manila").toFormat("cccc, dd LLL yyyy HH:mm:ss");
-            document.getElementById("dubai-time").textContent = dubaiTime;
-            document.getElementById("ph-time").textContent = phTime;
-        }
-        // Sync to the start of the next second
-        function startClock() {
-            updateClocks();
-            const msToNextSecond = 1000 - new Date().getMilliseconds();
-            setTimeout(() => {
-                updateClocks();
-                setInterval(updateClocks, 1000);
-            }, msToNextSecond);
-        }
-        startClock();
-    });
-</script>
+<div class="ui bottom attached tab segment {% if tab == 'formatter' %} active{% endif %}" data-tab="formatter">
+    {% include "formatter.njk" %}
+</div>
+<div class="ui bottom attached tab segment {% if tab == 'requester'%} active {% endif %}" data-tab="requester">
+    {% include "na-req.njk" %}
+</div>
+<div class="ui bottom attached tab segment {% if tab == 'addons'%} active {% endif %}" data-tab="addons">
+    {% include "addons.njk" %}
+</div>
+<div class="ui bottom attached tab segment {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
+    {% include "compensator.njk" %}
+</div>
+<div class="ui bottom attached tab segment {% if tab == 'callbacks'%} active {% endif %}" data-tab="callbacks">
+    {% include "callbacks.njk" %}
+</div>

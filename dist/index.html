@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css">
 
   <!-- Load Fomantic UI CSS -->
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="/src/css/main.css">
 
   <!-- Load Fomantic UI JS -->
   
@@ -57,8 +57,8 @@
 </div>
 
 
-    <div class="ui bottom attached tab segment " data-tab="formatter">
-        <link rel="stylesheet" href="css/formatter.css">
+<div class="ui bottom attached tab segment " data-tab="formatter">
+    <link rel="stylesheet" href="css/formatter.css">
 
 <h1>Formatter</h1>
 
@@ -98,9 +98,6 @@
 
 
 <div class="ui basic segments" id="ui_feedback">
-  <div class="ui blue segment">
-    <p id="ref_value">Reference:</p>
-  </div>
 
   <div class="ui blue segment">
     <p id="display_value">
@@ -114,9 +111,9 @@
 <button class="ui mini primary button btn" data-clipboard-target="#display_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
-    </div>
-    <div class="ui bottom attached tab segment " data-tab="requester">
-        <h1>Request Formatter</h1>
+</div>
+<div class="ui bottom attached tab segment " data-tab="requester">
+    <h1>Request Formatter</h1>
 
 <form action="" id="template_request_form" class="ui mini form">
 
@@ -192,9 +189,9 @@
 <button class="ui mini primary button btn" data-clipboard-target="#displayReq_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
-    </div>
-    <div class="ui bottom attached tab segment " data-tab="addons">
-        <h1>Addons</h1>
+</div>
+<div class="ui bottom attached tab segment " data-tab="addons">
+    <h1>Addons</h1>
 <table class="ui striped selectable small table">
   <thead>
     <tr>
@@ -231,9 +228,9 @@
     </tr>
   </tbody>
 </table>
-    </div>
-    <div class="ui bottom attached tab segment " data-tab="compensator">
-        <h1>Compensator</h1>
+</div>
+<div class="ui bottom attached tab segment " data-tab="compensator">
+    <h1>Compensator</h1>
 
 <form action="" id="template_form" class="ui mini form">
     <div class="field">
@@ -260,9 +257,9 @@
         <input type="number" id="totalView">
     </div>
 </form>
-    </div>
-    <div class="ui bottom attached tab segment " data-tab="callbacks">
-        <h1>Callbacks</h1>
+</div>
+<div class="ui bottom attached tab segment " data-tab="callbacks">
+    <h1>Callbacks</h1>
 <script src="js/callbacks.js" defer></script>
 <style>
     .timer-item {
@@ -346,44 +343,20 @@
             </div>
         </div>
 </div>
-    </div>
-
-
-
-
-<script>
-    $(document).ready(function () {
-        const { DateTime } = luxon;
-        document.getElementById("today_yes").checked = true; // Set "Yes" as default
-        checkToday(); // Initialize default state
-        function updateClocks() {
-            const now = DateTime.now();
-            const dubaiTime = now.setZone("Asia/Dubai").toFormat("cccc, dd LLL yyyy HH:mm:ss");
-            const phTime = now.setZone("Asia/Manila").toFormat("cccc, dd LLL yyyy HH:mm:ss");
-            document.getElementById("dubai-time").textContent = dubaiTime;
-            document.getElementById("ph-time").textContent = phTime;
-        }
-        // Sync to the start of the next second
-        function startClock() {
-            updateClocks();
-            const msToNextSecond = 1000 - new Date().getMilliseconds();
-            setTimeout(() => {
-                updateClocks();
-                setInterval(updateClocks, 1000);
-            }, msToNextSecond);
-        }
-        startClock();
-    });
-</script>
+</div>
   </main>
 
   <script>
 
-    $('.ui.dropdown').dropdown()
-    $('.menu .item').tab();
-    $('#date_calendar').calendar({ type: 'date' });
-    $('#time_calendar').calendar({ type: 'time' });
-    $('.ui.sticky').sticky();
+    $(document).ready(function () {
+      $('.ui.dropdown').dropdown()
+      $('.menu .item').tab();
+      $('#date_calendar').calendar({ type: 'date' });
+      $('#time_calendar').calendar({ type: 'time' });
+      $('.ui.sticky').sticky();
+
+    });
+
     let clipboard = new ClipboardJS('.btn');
 
     clipboard.on('success', function (e) {
