@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +10,15 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
   <!-- Load Fomantic UI CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
+  {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css"> #}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css">
 
   <!-- Load Fomantic UI CSS -->
   <link rel="stylesheet" href="css/main.css">
 
   <!-- Load Fomantic UI JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script>
+  {# <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script> #}
+  <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.js"></script>
 
   <!-- Load Clipboard JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
@@ -41,6 +44,12 @@
   </main>
 
   <script>
+
+    $('.ui.dropdown').dropdown()
+    $('.menu .item').tab();
+    $('#date_calendar').calendar({ type: 'date' });
+    $('#time_calendar').calendar({ type: 'time' });
+    $('.ui.sticky').sticky();
     let clipboard = new ClipboardJS('.btn');
 
     clipboard.on('success', function (e) {
