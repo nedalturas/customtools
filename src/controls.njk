@@ -9,33 +9,42 @@ layout: layout/base.njk
 
 Concern Codes
 
-{# <select class="ui fluid dropdown"  id="concern-codes">
-    <option value="">Select concern code</option>
+{# <select class="ui fluid dropdown" id="concern-codes">
+  <option value="">Select concern code</option>
 </select> #}
 
 <div class="ui list">
   Current Active Concern Codes:
   {% for item in concern_codes %}
-    <div class="item" data-code-id="{{ item.id }}" {% if item.disabled %}style="opacity: 0.6;"{% endif %}>
-      <div class="content">
-        <div class="header">{{ item.label }}{% if item.disabled %} <span style="color: red;">(Disabled)</span>{% endif %}</div>
-        {{ item.description }}
+  <div class="item" data-code-id="{{ item.id }}" {% if item.disabled %}style="opacity: 0.6;" {% endif %}>
+    <div class="content">
+      <div class="header">{{ item.label }}{% if item.disabled %} <span style="color: red;">(Disabled)</span>{% endif %}
       </div>
-      <div class="ui toggle checkbox" style="margin-left: auto;">
-        <input type="checkbox" class="code-toggle" data-code-id="{{ item.id }}" {% if not item.disabled %}checked{% endif %}>
-        <label></label>
-      </div>
+      {{ item.description }}
     </div>
+    <div class="ui mini slider checkbox" style="margin-left: auto;">
+      <input type="checkbox" class="code-toggle" data-code-id="{{ item.id }}" {% if not item.disabled %}checked{% endif
+        %}>
+      <label></label>
+    </div>
+  </div>
   {% endfor %}
 </div>
-
+<div class="ui tiny message">
+  Follow these format when adding a new concern code: <br>
+  - Department-Concern (e.g., OMT-Delay, OMT-NA, etc.) <br>
+  - Avoid using spaces and special characters in the label. Use hyphens or underscores instead
+</div>
 <form id="add-label-form">
-    <label for="new-label">Add New Concern Label:</label>
-    <input type="text" id="new-label" name="newLabel" placeholder="e.g., OMT-URGENT" required>
-    <button type="submit" id="submit-btn">Add Label</button>
+  <label for="new-label">Add New Concern Label:</label>
+
+
+  <input type="text" id="new-label" name="newLabel" placeholder="e.g., OMT-URGENT" required>
+  <button type="submit" id="submit-btn">Add Label</button>
 </form>
 
 <p id="status-message" class="ui message" style="display:none;"></p>
 
-{# <script src="/src/js/controls.js"></script> #}
+{#
+<script src="/src/js/controls.js"></script> #}
 <script src="/assets/js/controls.js"></script>

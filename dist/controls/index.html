@@ -58,45 +58,54 @@ Concern Codes
 <div class="ui list">
   Current Active Concern Codes:
   
-    <div class="item" data-code-id="1" >
-      <div class="content">
-        <div class="header">OMT-NA</div>
-        
+  <div class="item" data-code-id="1" >
+    <div class="content">
+      <div class="header">OMT-NA
       </div>
-      <div class="ui toggle checkbox" style="margin-left: auto;">
-        <input type="checkbox" class="code-toggle" data-code-id="1" checked>
-        <label></label>
-      </div>
+      
     </div>
+    <div class="ui mini slider checkbox" style="margin-left: auto;">
+      <input type="checkbox" class="code-toggle" data-code-id="1" checked>
+      <label></label>
+    </div>
+  </div>
   
-    <div class="item" data-code-id="2" >
-      <div class="content">
-        <div class="header">OMT-DELAY</div>
-        
+  <div class="item" data-code-id="2" >
+    <div class="content">
+      <div class="header">OMT-DELAY
       </div>
-      <div class="ui toggle checkbox" style="margin-left: auto;">
-        <input type="checkbox" class="code-toggle" data-code-id="2" checked>
-        <label></label>
-      </div>
+      
     </div>
+    <div class="ui mini slider checkbox" style="margin-left: auto;">
+      <input type="checkbox" class="code-toggle" data-code-id="2" checked>
+      <label></label>
+    </div>
+  </div>
   
-    <div class="item" data-code-id="3" style="opacity: 0.6;">
-      <div class="content">
-        <div class="header">urgent <span style="color: red;">(Disabled)</span></div>
-        
+  <div class="item" data-code-id="3" style="opacity: 0.6;" >
+    <div class="content">
+      <div class="header">urgent <span style="color: red;">(Disabled)</span>
       </div>
-      <div class="ui toggle checkbox" style="margin-left: auto;">
-        <input type="checkbox" class="code-toggle" data-code-id="3" >
-        <label></label>
-      </div>
+      
     </div>
+    <div class="ui mini slider checkbox" style="margin-left: auto;">
+      <input type="checkbox" class="code-toggle" data-code-id="3" >
+      <label></label>
+    </div>
+  </div>
   
 </div>
-
+<div class="ui tiny message">
+  Follow these format when adding a new concern code: <br>
+  - Department-Concern (e.g., OMT-Delay, OMT-NA, etc.) <br>
+  - Avoid using spaces and special characters in the label. Use hyphens or underscores instead
+</div>
 <form id="add-label-form">
-    <label for="new-label">Add New Concern Label:</label>
-    <input type="text" id="new-label" name="newLabel" placeholder="e.g., OMT-URGENT" required>
-    <button type="submit" id="submit-btn">Add Label</button>
+  <label for="new-label">Add New Concern Label:</label>
+
+
+  <input type="text" id="new-label" name="newLabel" placeholder="e.g., OMT-URGENT" required>
+  <button type="submit" id="submit-btn">Add Label</button>
 </form>
 
 <p id="status-message" class="ui message" style="display:none;"></p>
