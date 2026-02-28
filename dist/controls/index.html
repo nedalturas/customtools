@@ -56,6 +56,25 @@ Concern Codes
     <option value="">Select concern code</option>
 </select>
 
+
+<label for="concern-dropdown">Select Concern:</label>
+<select id="concern-dropdown" name="concern">
+    <option value="" disabled selected>Select an option</option>
+    
+        <option value="1">OMT-NA</option>
+    
+        <option value="2">OMT-DELAY</option>
+    
+</select>
+
+<form id="add-label-form">
+    <label for="new-label">Add New Concern Label:</label>
+    <input type="text" id="new-label" name="newLabel" placeholder="e.g., OMT-URGENT" required>
+    <button type="submit" id="submit-btn">Add Label</button>
+</form>
+
+<p id="status-message"></p>
+
 <script src="js/controls.js"></script>
   </main>
 
@@ -112,6 +131,25 @@ Concern Codes
           hideDuration: 500
         }
       });
+
+
+  fetch('/assets/data/concern_codes.json')
+    .then(res => res.json())
+    .then(data => {
+
+      console.log(data)
+      const select = document.getElementById('concern-codes');
+
+      data.forEach(({ id, label }) => {
+        select.innerHTML += `<option value="${id}">${label}</option>`;
+      });
+
+      // Init Fomantic dropdown after options are populated
+      $('#concern-codes').dropdown();
+    })
+    .catch(error => {
+      console.error('Error loading concern codes:', error);
+    });
     });
 
   </script>

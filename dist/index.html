@@ -80,8 +80,14 @@
 
     <label for="concern_select">Concern</label>
     <select class="ui fluid dropdown" name="Concern" id="concern_select">
-      <option value="OMT NA">OMT NA</option>
-      <option value="OMT Delay">OMT DELAY</option>
+      
+
+      <option value="" disabled selected>Select an option</option>
+        
+            <option value="1">OMT-NA</option>
+        
+            <option value="2">OMT-DELAY</option>
+        
     </select>
 
   </div>
@@ -401,6 +407,25 @@
           hideDuration: 500
         }
       });
+
+
+  fetch('/assets/data/concern_codes.json')
+    .then(res => res.json())
+    .then(data => {
+
+      console.log(data)
+      const select = document.getElementById('concern-codes');
+
+      data.forEach(({ id, label }) => {
+        select.innerHTML += `<option value="${id}">${label}</option>`;
+      });
+
+      // Init Fomantic dropdown after options are populated
+      $('#concern-codes').dropdown();
+    })
+    .catch(error => {
+      console.error('Error loading concern codes:', error);
+    });
     });
 
   </script>

@@ -11,4 +11,21 @@ Concern Codes
     <option value="">Select concern code</option>
 </select>
 
+
+<label for="concern-dropdown">Select Concern:</label>
+<select id="concern-dropdown" name="concern">
+    <option value="" disabled selected>Select an option</option>
+    {% for item in concern_codes %}
+        <option value="{{ item.id }}">{{ item.label }}</option>
+    {% endfor %}
+</select>
+
+<form id="add-label-form">
+    <label for="new-label">Add New Concern Label:</label>
+    <input type="text" id="new-label" name="newLabel" placeholder="e.g., OMT-URGENT" required>
+    <button type="submit" id="submit-btn">Add Label</button>
+</form>
+
+<p id="status-message"></p>
+
 <script src="js/controls.js"></script>
