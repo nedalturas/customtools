@@ -370,10 +370,16 @@
 
       $('body').toast({
         message: 'Copied to clipboard!',
-        class: 'success',
+        class: 'blue',
         showIcon: 'clipboard check',
-        displayTime: 2000,
-        position: 'bottom right'
+        // displayTime: 2000,
+        position: 'top center',
+        transition: {
+          showMethod: 'slide down',
+          showDuration: 100,
+          hideMethod: 'slide down',
+          hideDuration: 500
+        }
       });
     });
 
@@ -386,7 +392,14 @@
         class: 'error',
         showIcon: 'exclamation triangle',
         displayTime: 3000,
-        position: 'bottom right'
+        position: 'top center',
+
+        transition: {
+          showMethod: 'slide down',
+          showDuration: 100,
+          hideMethod: 'slide down',
+          hideDuration: 500
+        }
       });
     });
 
