@@ -1,12 +1,15 @@
-// Helper function to show status message with spinner
+// Helper function to show status message with Fomantic UI loader
 function showStatus(message, type = 'loading') {
   const statusMessage = document.getElementById('status-message');
   if (!statusMessage) return;
-  
-  statusMessage.className = type;
-  
+
+  // reset visibility and classes
+  statusMessage.style.display = 'flex';
+  statusMessage.className = `ui message ${type}`;
+
   if (type === 'loading') {
-    statusMessage.innerHTML = `<span class="spinner"></span>${message}`;
+    // inline active loader from Fomantic UI
+    statusMessage.innerHTML = `<div class="ui active inline loader"></div> ${message}`;
   } else {
     statusMessage.textContent = message;
   }
