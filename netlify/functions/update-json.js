@@ -9,8 +9,8 @@ exports.handler = async (event) => {
         
         // These should be set in your hosting provider's environment variables
         const GITHUB_TOKEN = process.env.GITHUB_TOKEN; 
-        const REPO_OWNER = 'your-github-username'; // Replace this
-        const REPO_NAME = 'your-repo-name';       // Replace this
+        const REPO_OWNER = 'nedalturas'; // Replace this
+        const REPO_NAME = 'customtools';       // Replace this
         const FILE_PATH = 'src/_data/concern_codes.json'; // Adjust if needed
 
         const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
