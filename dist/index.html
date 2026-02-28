@@ -367,11 +367,27 @@
       console.info('Trigger:', e.trigger);
 
       e.clearSelection();
+
+      $('body').toast({
+        message: 'Copied to clipboard!',
+        class: 'success',
+        showIcon: 'clipboard check',
+        displayTime: 2000,
+        position: 'bottom right'
+      });
     });
 
     clipboard.on('error', function (e) {
       console.error('Action:', e.action);
       console.error('Trigger:', e.trigger);
+
+      $('body').toast({
+        message: 'Failed to copy to clipboard',
+        class: 'error',
+        showIcon: 'exclamation triangle',
+        displayTime: 3000,
+        position: 'bottom right'
+      });
     });
 
   </script>
