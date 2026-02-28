@@ -55,19 +55,6 @@ Concern Codes
 
 
 
-
-<label for="concern-dropdown">Select Concern:</label>
-<select id="concern-dropdown" name="concern">
-    <option value="" disabled selected>Select an option</option>
-    
-        <option value="1">OMT-NA</option>
-    
-        <option value="2">OMT-DELAY</option>
-    
-        <option value="3">urgent</option>
-    
-</select>
-
 <div class="ui list">
   Current Active Concern Codes:
   
@@ -76,9 +63,10 @@ Concern Codes
         <div class="header">OMT-NA</div>
         
       </div>
-      
-        <button type="button" class="disable-code-btn ui button" data-code-id="1">Disable</button>
-      
+      <div class="ui toggle checkbox" style="margin-left: auto;">
+        <input type="checkbox" class="code-toggle" data-code-id="1" checked>
+        <label></label>
+      </div>
     </div>
   
     <div class="item" data-code-id="2" >
@@ -86,9 +74,10 @@ Concern Codes
         <div class="header">OMT-DELAY</div>
         
       </div>
-      
-        <button type="button" class="disable-code-btn ui button" data-code-id="2">Disable</button>
-      
+      <div class="ui toggle checkbox" style="margin-left: auto;">
+        <input type="checkbox" class="code-toggle" data-code-id="2" checked>
+        <label></label>
+      </div>
     </div>
   
     <div class="item" data-code-id="3" style="opacity: 0.6;">
@@ -96,9 +85,10 @@ Concern Codes
         <div class="header">urgent <span style="color: red;">(Disabled)</span></div>
         
       </div>
-      
-        <button type="button" class="enable-code-btn ui button positive" data-code-id="3">Enable</button>
-      
+      <div class="ui toggle checkbox" style="margin-left: auto;">
+        <input type="checkbox" class="code-toggle" data-code-id="3" >
+        <label></label>
+      </div>
     </div>
   
 </div>
