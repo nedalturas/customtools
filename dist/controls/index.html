@@ -51,9 +51,7 @@
 
 Concern Codes
 
-<select class="ui fluid dropdown"  id="concern-codes">
-    <option value="">Select concern code</option>
-</select>
+
 
 
 <label for="concern-dropdown">Select Concern:</label>
@@ -67,6 +65,41 @@ Concern Codes
         <option value="3">urgent</option>
     
 </select>
+
+<div class="ui list">
+  Current Active Concern Codes:
+  
+    <div class="item" data-code-id="1" >
+      <div class="content">
+        <div class="header">OMT-NA</div>
+        
+      </div>
+      
+        <button type="button" class="disable-code-btn ui button" data-code-id="1">Disable</button>
+      
+    </div>
+  
+    <div class="item" data-code-id="2" >
+      <div class="content">
+        <div class="header">OMT-DELAY</div>
+        
+      </div>
+      
+        <button type="button" class="disable-code-btn ui button" data-code-id="2">Disable</button>
+      
+    </div>
+  
+    <div class="item" data-code-id="3" >
+      <div class="content">
+        <div class="header">urgent</div>
+        
+      </div>
+      
+        <button type="button" class="disable-code-btn ui button" data-code-id="3">Disable</button>
+      
+    </div>
+  
+</div>
 
 <form id="add-label-form">
     <label for="new-label">Add New Concern Label:</label>

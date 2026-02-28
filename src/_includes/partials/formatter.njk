@@ -25,7 +25,9 @@
 
       <option value="" disabled selected>Select an option</option>
         {% for item in concern_codes %}
-            <option value="{{ item.label }}">{{ item.label }}</option>
+            {% if not item.disabled %}
+                <option value="{{ item.label }}">{{ item.label }}</option>
+            {% endif %}
         {% endfor %}
     </select>
 

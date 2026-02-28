@@ -71,4 +71,90 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
       console.error("The form was not found on this page.");
   }
+
+  // Handle disable button clicks
+  const disableButtons = document.querySelectorAll('.disable-code-btn');
+  disableButtons.forEach(button => {
+      button.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const codeId = button.getAttribute('data-code-id');
+          const codeLabel = button.parentElement.querySelector('.header').textContent.trim();
+          const statusMessage = document.getElementById('status-message');
+          
+          // Show confirmation dialog
+          const confirmed = confirm(`Are you sure you want to disable "${codeLabel}"?`);
+          
+          if (!confirmed) {
+              return;
+          }
+          
+          button.disabled = true;
+          button.textContent = "Disabling...";
+          statusMessage.textContent = "Disabling concern code...";
+
+          try {
+              // Send disable request to your serverless function
+              const response = await fetch('/.netlify/functions/update-json', {
+                  method: 'POST',
+                  body: JSON.stringify({ disable: codeId }),
+                  headers: { 'Content-Type': 'application/json' }
+              });
+
+              if (response.ok) {
+                  statusMessage.textContent = "Concern code disabled! Refreshing in 3 seconds...";
+                  setTimeout(() => location.reload(), 3000);
+              } else {
+                  throw new Error('Failed to disable concern code');
+              }
+          } catch (error) {
+              console.error(error);
+              statusMessage.textContent = "Error disabling the concern code. Please try again.";
+              button.disabled = false;
+              button.textContent = "Disable";
+          }
+      });
+  });
+
+  // Handle enable button clicks
+  const enableButtons = document.querySelectorAll('.enable-code-btn');
+  enableButtons.forEach(button => {
+      button.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const codeId = button.getAttribute('data-code-id');
+          const codeLabel = button.parentElement.querySelector('.header').textContent.replace('(Disabled)', '').trim();
+          const statusMessage = document.getElementById('status-message');
+          
+          // Show confirmation dialog
+          const confirmed = confirm(`Are you sure you want to enable "${codeLabel}"?`);
+          
+          if (!confirmed) {
+              return;
+          }
+          
+          button.disabled = true;
+          button.textContent = "Enabling...";
+          statusMessage.textContent = "Enabling concern code...";
+
+          try {
+              // Send enable request to your serverless function
+              const response = await fetch('/.netlify/functions/update-json', {
+                  method: 'POST',
+                  body: JSON.stringify({ enable: codeId }),
+                  headers: { 'Content-Type': 'application/json' }
+              });
+
+              if (response.ok) {
+                  statusMessage.textContent = "Concern code enabled! Refreshing in 3 seconds...";
+                  setTimeout(() => location.reload(), 3000);
+              } else {
+                  throw new Error('Failed to enable concern code');
+              }
+          } catch (error) {
+              console.error(error);
+              statusMessage.textContent = "Error enabling the concern code. Please try again.";
+              button.disabled = false;
+              button.textContent = "Enable";
+          }
+      });
+  });
 });

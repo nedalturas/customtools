@@ -5,7 +5,7 @@ exports.handler = async (event) => {
     }
 
     try {
-        const { label } = JSON.parse(event.body);
+        const { label, disable, enable } = JSON.parse(event.body);
         
         // These should be set in your hosting provider's environment variables
         const GITHUB_TOKEN = process.env.GITHUB_TOKEN; 
@@ -30,12 +30,35 @@ exports.handler = async (event) => {
         const currentContent = Buffer.from(fileData.content, 'base64').toString('utf-8');
         const jsonArray = JSON.parse(currentContent);
 
-        // Create a new ID (simple method: find max ID and add 1)
-        const maxId = jsonArray.reduce((max, item) => Math.max(max, parseInt(item.id)), 0);
-        const newId = (maxId + 1).toString();
+        let commitMessage = '';
 
-        // Add the new label to the array
-        jsonArray.push({ id: newId, label: label });
+        if (label) {
+            // Add new label
+            const maxId = jsonArray.reduce((max, item) => Math.max(max, parseInt(item.id)), 0);
+            const newId = (maxId + 1).toString();
+            jsonArray.push({ id: newId, label: label, disabled: false });
+            commitMessage = `Add new concern label: ${label}`;
+        } else if (disable) {
+            // Disable a concern code
+            const itemIndex = jsonArray.findIndex(item => item.id === disable);
+            if (itemIndex !== -1) {
+                jsonArray[itemIndex].disabled = true;
+                commitMessage = `Disable concern code: ${jsonArray[itemIndex].label}`;
+            } else {
+                throw new Error('Concern code not found');
+            }
+        } else if (enable) {
+            // Enable a concern code
+            const itemIndex = jsonArray.findIndex(item => item.id === enable);
+            if (itemIndex !== -1) {
+                jsonArray[itemIndex].disabled = false;
+                commitMessage = `Enable concern code: ${jsonArray[itemIndex].label}`;
+            } else {
+                throw new Error('Concern code not found');
+            }
+        } else {
+            throw new Error('No valid action provided');
+        }
 
         // Encode the updated array back to Base64
         const newContentBase64 = Buffer.from(JSON.stringify(jsonArray, null, 4)).toString('base64');
@@ -49,7 +72,7 @@ exports.handler = async (event) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                message: `Add new concern label: ${label}`,
+                message: commitMessage,
                 content: newContentBase64,
                 sha: fileData.sha // Required! This proves we are updating the latest version
             })
@@ -59,7 +82,7 @@ exports.handler = async (event) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: 'Successfully added label and triggered build.' })
+            body: JSON.stringify({ message: 'Successfully updated concern codes.' })
         };
 
     } catch (error) {

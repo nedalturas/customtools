@@ -1,14 +1,17 @@
 [
     {
         "id": "1",
-        "label": "OMT-NA"
+        "label": "OMT-NA",
+        "disabled": false
     },
     {
         "id": "2",
-        "label": "OMT-DELAY"
+        "label": "OMT-DELAY",
+        "disabled": false
     },
     {
         "id": "3",
-        "label": "urgent"
+        "label": "urgent",
+        "disabled": false
     }
 ]

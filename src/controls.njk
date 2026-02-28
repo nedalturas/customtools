@@ -7,9 +7,9 @@ layout: layout/base.njk
 
 Concern Codes
 
-<select class="ui fluid dropdown"  id="concern-codes">
+{# <select class="ui fluid dropdown"  id="concern-codes">
     <option value="">Select concern code</option>
-</select>
+</select> #}
 
 
 <label for="concern-dropdown">Select Concern:</label>
@@ -19,6 +19,23 @@ Concern Codes
         <option value="{{ item.id }}">{{ item.label }}</option>
     {% endfor %}
 </select>
+
+<div class="ui list">
+  Current Active Concern Codes:
+  {% for item in concern_codes %}
+    <div class="item" data-code-id="{{ item.id }}" {% if item.disabled %}style="opacity: 0.6;"{% endif %}>
+      <div class="content">
+        <div class="header">{{ item.label }}{% if item.disabled %} <span style="color: red;">(Disabled)</span>{% endif %}</div>
+        {{ item.description }}
+      </div>
+      {% if not item.disabled %}
+        <button type="button" class="disable-code-btn ui button" data-code-id="{{ item.id }}">Disable</button>
+      {% else %}
+        <button type="button" class="enable-code-btn ui button positive" data-code-id="{{ item.id }}">Enable</button>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
 
 <form id="add-label-form">
     <label for="new-label">Add New Concern Label:</label>
