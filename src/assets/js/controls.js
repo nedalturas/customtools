@@ -55,86 +55,43 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("The form was not found on this page.");
   }
 
-  // Handle disable button clicks
-  const disableButtons = document.querySelectorAll('.disable-code-btn');
-  disableButtons.forEach(button => {
-      button.addEventListener('click', async (e) => {
-          e.preventDefault();
-          const codeId = button.getAttribute('data-code-id');
-          const codeLabel = button.parentElement.querySelector('.header').textContent.trim();
-          
-          // Show confirmation dialog
-          const confirmed = confirm(`Are you sure you want to disable "${codeLabel}"?`);
-          
+  // Handle toggle switch changes (enable/disable)
+  const toggles = document.querySelectorAll('.code-toggle');
+  toggles.forEach(input => {
+      input.addEventListener('change', async (e) => {
+          const codeId = input.getAttribute('data-code-id');
+          const codeLabel = input.parentElement.parentElement.querySelector('.header').textContent.replace('(Disabled)', '').trim();
+          const enable = input.checked;
+          const action = enable ? 'enable' : 'disable';
+
+          const confirmed = confirm(`Are you sure you want to ${action} "${codeLabel}"?`);
           if (!confirmed) {
+              // revert state
+              input.checked = !enable;
               return;
           }
-          
-          button.disabled = true;
-          button.textContent = "Disabling...";
-          showStatus('Disabling concern code...', 'loading');
+
+          input.disabled = true;
+          showStatus(`${enable ? 'Enabling' : 'Disabling'} concern code...`, 'loading');
 
           try {
-              // Send disable request to your serverless function
               const response = await fetch('/.netlify/functions/update-json', {
                   method: 'POST',
-                  body: JSON.stringify({ disable: codeId }),
+                  body: JSON.stringify(enable ? { enable: codeId } : { disable: codeId }),
                   headers: { 'Content-Type': 'application/json' }
               });
 
               if (response.ok) {
-                  showStatus('Concern code disabled! Refreshing in 3 seconds...', 'success');
+                  showStatus(`Concern code ${enable ? 'enabled' : 'disabled'}! Refreshing in 3 seconds...`, 'success');
                   setTimeout(() => location.reload(), 3000);
               } else {
-                  throw new Error('Failed to disable concern code');
+                  throw new Error(`Failed to ${action} concern code`);
               }
           } catch (error) {
               console.error(error);
-              showStatus('Error disabling the concern code. Please try again.', 'error');
-              button.disabled = false;
-              button.textContent = "Disable";
-          }
-      });
-  });
-
-  // Handle enable button clicks
-  const enableButtons = document.querySelectorAll('.enable-code-btn');
-  enableButtons.forEach(button => {
-      button.addEventListener('click', async (e) => {
-          e.preventDefault();
-          const codeId = button.getAttribute('data-code-id');
-          const codeLabel = button.parentElement.querySelector('.header').textContent.replace('(Disabled)', '').trim();
-          
-          // Show confirmation dialog
-          const confirmed = confirm(`Are you sure you want to enable "${codeLabel}"?`);
-          
-          if (!confirmed) {
-              return;
-          }
-          
-          button.disabled = true;
-          button.textContent = "Enabling...";
-          showStatus('Enabling concern code...', 'loading');
-
-          try {
-              // Send enable request to your serverless function
-              const response = await fetch('/.netlify/functions/update-json', {
-                  method: 'POST',
-                  body: JSON.stringify({ enable: codeId }),
-                  headers: { 'Content-Type': 'application/json' }
-              });
-
-              if (response.ok) {
-                  showStatus('Concern code enabled! Refreshing in 3 seconds...', 'success');
-                  setTimeout(() => location.reload(), 3000);
-              } else {
-                  throw new Error('Failed to enable concern code');
-              }
-          } catch (error) {
-              console.error(error);
-              showStatus('Error enabling the concern code. Please try again.', 'error');
-              button.disabled = false;
-              button.textContent = "Enable";
+              showStatus(`Error ${enable ? 'enabling' : 'disabling'} the concern code. Please try again.`, 'error');
+              input.disabled = false;
+              input.checked = !enable; // revert
           }
       });
   });

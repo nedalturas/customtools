@@ -13,15 +13,6 @@ Concern Codes
     <option value="">Select concern code</option>
 </select> #}
 
-
-<label for="concern-dropdown">Select Concern:</label>
-<select id="concern-dropdown" name="concern">
-    <option value="" disabled selected>Select an option</option>
-    {% for item in concern_codes %}
-        <option value="{{ item.id }}">{{ item.label }}</option>
-    {% endfor %}
-</select>
-
 <div class="ui list">
   Current Active Concern Codes:
   {% for item in concern_codes %}
@@ -30,11 +21,10 @@ Concern Codes
         <div class="header">{{ item.label }}{% if item.disabled %} <span style="color: red;">(Disabled)</span>{% endif %}</div>
         {{ item.description }}
       </div>
-      {% if not item.disabled %}
-        <button type="button" class="disable-code-btn ui button" data-code-id="{{ item.id }}">Disable</button>
-      {% else %}
-        <button type="button" class="enable-code-btn ui button positive" data-code-id="{{ item.id }}">Enable</button>
-      {% endif %}
+      <div class="ui toggle checkbox" style="margin-left: auto;">
+        <input type="checkbox" class="code-toggle" data-code-id="{{ item.id }}" {% if not item.disabled %}checked{% endif %}>
+        <label></label>
+      </div>
     </div>
   {% endfor %}
 </div>
