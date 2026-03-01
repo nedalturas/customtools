@@ -25,12 +25,13 @@
 
       <option value="" disabled selected>Select an option</option>
 
-                <option value="">Select Concern</option>
-        {% for item in concern_codes %}
-            {% if not item.disabled %}
-                <option value="{{ item.label }}">{{ item.label }}</option>
-            {% endif %}
-        {% endfor %}
+      <option value="">Select Concern</option>
+      
+      {% for item in concern_codes %}
+      {% if not item.disabled %}
+      <option value="{{ item.label }}">{{ item.label }}</option>
+      {% endif %}
+      {% endfor %}
     </select>
 
   </div>
