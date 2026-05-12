@@ -8,7 +8,7 @@ layout: layout/base.njk
     <a class="item{% if tab == 'requester' %} active{% endif %}" data-tab="requester">Requester</a>
     <a class="item{% if tab == 'addons' %} active{% endif %}" data-tab="addons">Addons</a>
     <a class="item{% if tab == 'compensator' %} active{% endif %}" data-tab="compensator">Compensator</a>
-    <a class="item{% if tab == 'callbacks' %} active{% endif %}" data-tab="callbacks">Callbacks</a>
+    {# <a class="item{% if tab == 'callbacks' %} active{% endif %}" data-tab="callbacks">Callbacks</a> #}
 </div>
 
 
@@ -23,7 +23,4 @@ layout: layout/base.njk
 </div>
 <div class="ui bottom attached tab segment {% if tab == 'compensator'%} active {% endif %}" data-tab="compensator">
     {% include "partials/compensator.njk" %}
-</div>
-<div class="ui bottom attached tab segment {% if tab == 'callbacks'%} active {% endif %}" data-tab="callbacks">
-    {% include "partials/callbacks.njk" %}
 </div>
