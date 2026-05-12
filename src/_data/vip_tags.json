@@ -1,0 +1,9 @@
+[
+    {
+        "name": "Home Cleaning",
+        "managers": [
+            { "id": 1, "name": "Alice Reyes" },
+            { "id": 2, "name": "Bob Santos" }
+        ]
+    }
+]

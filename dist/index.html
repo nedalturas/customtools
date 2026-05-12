@@ -32,6 +32,8 @@
 
   <script src="/assets/js/formatter.js"></script>
   <script src="/assets/js/requester.js"></script>
+  <script src="/assets/js/vip_tagging.js"></script>
+
 </head>
 
 <body>
@@ -52,7 +54,7 @@
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
     <a class="item" data-tab="compensator">Compensator</a>
-    <a class="item" data-tab="callbacks">Callbacks</a>
+    <a class="item" data-tab="VIP Tagging">VIP Tagging</a>
 </div>
 
 
@@ -286,7 +288,50 @@
     </div>
 </form>
 </div>
+<div class="ui bottom attached tab segment " data-tab="VIP Tagging">
+    
+<script>
+    document.getElementById('concern_select').addEventListener('change', (e) => {
+  const selected = vipTags.find(s => s.name === e.target.value);
+  const list = document.getElementById('managers-list');
+  list.innerHTML = selected
+    ? selected.managers.map(m => `<li>${m.name}</li>`).join('')
+    : '';
+});
+</script>
 
+<h1>VIP Tags</h1>
+
+<form action="" id="template_form" class="ui mini form">
+    <div class="field">
+
+        <label for="concern_select">Service</label>
+        <select class="ui fluid dropdown" name="Concern" id="concern_select">
+            
+
+            <option value="" disabled selected>Select an option</option>
+
+            <option value="">Select Service</option>
+
+            
+            <option value="Home Cleaning">Home Cleaning</option>
+            
+        </select>
+
+    </div>
+</form>
+
+
+<div class="ui basic segments" id="ui_feedback">
+
+    <div class="ui blue segment">
+        <p id="display_value">
+            <ul id="managers-list"></ul>
+        </p>
+    </div>
+</div>
+
+</div>
   </main>
 
   <script>
