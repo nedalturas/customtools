@@ -1,13 +1,4 @@
 
-<script>
-    document.getElementById('concern_select').addEventListener('change', (e) => {
-  const selected = vipTags.find(s => s.name === e.target.value);
-  const list = document.getElementById('managers-list');
-  list.innerHTML = selected
-    ? selected.managers.map(m => `<li>${m.name}</li>`).join('')
-    : '';
-});
-</script>
 
 <h1>VIP Tags</h1>
 
@@ -36,7 +27,7 @@
 
     <div class="ui blue segment">
         <p id="display_value">
-            <ul id="managers-list"></ul>
+            <ul id="managers-list">Manager</ul>
         </p>
     </div>
 </div>

@@ -1,9 +1,16 @@
 [
-    {
-        "name": "Home Cleaning",
-        "managers": [
-            { "id": 1, "name": "Alice Reyes" },
-            { "id": 2, "name": "Bob Santos" }
-        ]
-    }
+  {
+    "name": "Home Cleaning",
+    "managers": [
+      { "id": 1, "name": "Alice Reyes" },
+      { "id": 2, "name": "Bob Santos" }
+    ]
+  },
+  {
+    "name": "Special Verticals Handyman",
+    "managers": [
+      { "id": 1, "name": "Padam Yadav" },
+      { "id": 2, "name": "Rohit Titus" }
+    ]
+  }
 ]
