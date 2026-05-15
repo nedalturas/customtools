@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("concern_select").addEventListener("change", (e) => {
-    const selected = vip_tags.find((s) => s.name === e.target.value);
-    const list = document.getElementById("managers-list");
-    list.innerHTML = selected
-      ? selected.managers.map((m) => `<li>${m.name}</li>`).join("")
-      : "";
+  
+  const select = document.getElementById('concern_select');
+  const display = document.getElementById('display_value');
+  
+  select.addEventListener('change', () => {
+    const selected = vip_tags.find(s => s.name === select.value);
+  
+    display.innerHTML = selected
+      ? selected.managers.map(m => `<p>${m.id}. ${m.name}</p>`).join('')
+      : '';
   });
 });
