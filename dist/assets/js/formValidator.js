@@ -1,14 +1,18 @@
 const FormValidator = {
-    init(formId, rules, onValid) {
+    init(formId, rules, onValid, submitBtnId) {
       const $form = $(`#${formId}`);
+      const $btn = $(`#${submitBtnId}`);
   
+      $btn.addClass('disabled');
+
       $form.form({
         fields: rules,
         inline: true,
         on: 'blur',
+        onValid() { $btn.removeClass('disabled'); },
+        oninvalid() { $btn.addClass('disabled'); }
       });
   
-      // Expose a validate-then-run helper
       return () => {
         if ($form.form('is valid')) {
           onValid();
