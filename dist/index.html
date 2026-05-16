@@ -57,55 +57,50 @@
 
 
 <div class="ui bottom attached tab segment active " data-tab="formatter">
-    <link rel="stylesheet" href="css/formatter.css">
-
-<h1>Formatter</h1>
+    <h1>Formatter</h1>
 
 <form action="" id="template_form" class="ui mini form">
 
   
   <div class="field">
     <label for="full_name">Full Name:</label>
-    <input type="text" id="full_name" name="Full Name" />
+    <input type="text" id="full_name" name="Full Name"  required/>
   </div>
 
   
   <div class="field">
     <label for="phone_number">Phone Number:</label>
-    <input type="number" id="phone_number" name="Phone Numberr" />
+    <input type="number" id="phone_number" name="Phone Number" required />
   </div>
 
   <div class="field">
 
     <label for="concern_select">Concern</label>
-    <select class="ui fluid dropdown" name="Concern" id="concern_select">
-      
+    <select class="ui fluid dropdown" name="Concern" id="concern_select" required>
 
-      <option value="" disabled selected>Select an option</option>
-
-      <option value="">Select Concern</option>
+      <option value="" selected>Select Concern</option>
       
       
       
-      <option value="OMT-NA">OMT-NA</option>
+        <option value="OMT-NA">OMT-NA</option>
       
       
       
-      <option value="OMT-DELAY">OMT-DELAY</option>
-      
+        <option value="OMT-DELAY">OMT-DELAY</option>
       
       
       
       
       
       
-      <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
+      
+        <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
       
       
       
       
       
-      <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
+        <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
       
       
     </select>
@@ -114,7 +109,7 @@
 
   <div class="mini two ui buttons" id="button_group">
 
-    <button type="button" id="showValueBtn" class="ui button" onClick="showValues()">
+    <button type="button" id="showValueBtn" class="ui button" onClick="runShowValues()">
       Convert
     </button>
     <button type="button" class="ui button negative" onclick="clearConverterForm()">Clear</button>
@@ -137,6 +132,36 @@
 <button class="ui mini primary button btn" data-clipboard-target="#display_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
+
+
+<script defer>
+  const templateFormRules = {
+  full_name: {
+    identifier: 'full_name',
+    rules: [{ type: 'empty', prompt: 'Full Name is required' }]
+  },
+  phone_number: {
+    identifier: 'phone_number',
+    rules: [
+      { type: 'empty', prompt: 'Phone Number is required' },
+      { type: 'integer', prompt: 'Must be a valid number' }
+    ]
+  },
+  concern_select: {
+    identifier: 'concern_select',
+    rules: [{ type: 'empty', prompt: 'Please select a concern' }]
+  }
+};
+
+// Wire up on page load
+const runShowValues = FormValidator.init(
+  'template_form',
+  templateFormRules,
+  showValues, // your existing function
+  'showvalueBtn'
+);
+</script>
+
 </div>
 <div class="ui bottom attached tab segment " data-tab="requester">
     <h1>Request Formatter</h1>
