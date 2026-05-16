@@ -13,9 +13,10 @@ function showValues() {
 
 function clearConverterForm() {
   const form = document.getElementById('template_form');
-  if (form) {
-    form.reset();
-  }
+  if (form) form.reset();
+
+  $('#concern_select').closest('.ui.dropdown').dropdown('clear');
+  
 
   const displayValueElement = document.getElementById('display_value');
   if (displayValueElement) {

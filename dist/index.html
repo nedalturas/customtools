@@ -9,29 +9,27 @@
   <!-- Load jQuery First -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-  <!-- Load Fomantic UI CSS -->
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css">
-
-  <!-- Load Fomantic UI CSS -->
-  
-
   <!-- Load Fomantic UI JS -->
-  
   <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.js"></script>
 
   <!-- Load Clipboard JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 
-  <!-- Load Luxon -->
-  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+  
+  <script src="/assets/js/formValidator.js" ></script>
+  <script src="/assets/js/formatter.js" ></script>
+  <script src="/assets/js/requester.js" defer></script>
+  <script src="/assets/js/semantic_init.js" defer></script>
+  <script src="/assets/js/clipboard.js" defer></script>
 
+
+
+  <!-- Load Fomantic UI CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css">
 
   
-
-
-  <script src="/assets/js/formatter.js"></script>
-  <script src="/assets/js/requester.js"></script>
+  <link rel="stylesheet" href="../../assets/css/controls.css">
+  <link rel="stylesheet" href="../../assets/css/formatter.css">
 </head>
 
 <body>
@@ -51,61 +49,56 @@
     <a class="item active " data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
-    <a class="item" data-tab="compensator">Compensator</a>
+    
     
 </div>
 
 
 <div class="ui bottom attached tab segment active " data-tab="formatter">
-    <link rel="stylesheet" href="css/formatter.css">
-
-<h1>Formatter</h1>
+    <h1>Formatter</h1>
 
 <form action="" id="template_form" class="ui mini form">
 
   
   <div class="field">
     <label for="full_name">Full Name:</label>
-    <input type="text" id="full_name" name="Full Name" />
+    <input type="text" id="full_name" name="Full Name"  required/>
   </div>
 
   
   <div class="field">
     <label for="phone_number">Phone Number:</label>
-    <input type="number" id="phone_number" name="Phone Numberr" />
+    <input type="number" id="phone_number" name="Phone Number" required />
   </div>
 
   <div class="field">
 
     <label for="concern_select">Concern</label>
-    <select class="ui fluid dropdown" name="Concern" id="concern_select">
-      
+    <select class="ui fluid dropdown" name="Concern" id="concern_select" required>
 
-      <option value="" disabled selected>Select an option</option>
-
-      <option value="">Select Concern</option>
+      <option value="" selected>Select Concern</option>
       
       
       
-      <option value="OMT-NA">OMT-NA</option>
+        <option value="OMT-NA">OMT-NA</option>
       
       
       
-      <option value="OMT-DELAY">OMT-DELAY</option>
-      
+        <option value="OMT-DELAY">OMT-DELAY</option>
       
       
       
       
       
       
-      <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
+      
+        <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
       
       
       
       
       
-      <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
+        <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
       
       
     </select>
@@ -114,7 +107,7 @@
 
   <div class="mini two ui buttons" id="button_group">
 
-    <button type="button" id="showValueBtn" class="ui button" onClick="showValues()">
+    <button type="button" id="showValueBtn" class="ui button" onClick="runShowValues()">
       Convert
     </button>
     <button type="button" class="ui button negative" onclick="clearConverterForm()">Clear</button>
@@ -137,6 +130,36 @@
 <button class="ui mini primary button btn" data-clipboard-target="#display_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
+
+
+<script defer>
+  const templateFormRules = {
+  full_name: {
+    identifier: 'full_name',
+    rules: [{ type: 'empty', prompt: 'Full Name is required' }]
+  },
+  phone_number: {
+    identifier: 'phone_number',
+    rules: [
+      { type: 'empty', prompt: 'Phone Number is required' },
+      { type: 'integer', prompt: 'Must be a valid number' }
+    ]
+  },
+  concern_select: {
+    identifier: 'concern_select',
+    rules: [{ type: 'empty', prompt: 'Please select a concern' }]
+  }
+};
+
+// Wire up on page load
+const runShowValues = FormValidator.init(
+  'template_form',
+  templateFormRules,
+  showValues, // your existing function
+  'showvalueBtn'
+);
+</script>
+
 </div>
 <div class="ui bottom attached tab segment " data-tab="requester">
     <h1>Request Formatter</h1>
@@ -257,97 +280,9 @@
   </tbody>
 </table>
 </div>
-<div class="ui bottom attached tab segment " data-tab="compensator">
-    <h1>Compensator</h1>
 
-<form action="" id="template_form" class="ui mini form">
-    <div class="field">
-        <label for="Customer Segment">Amount</label>
-        <input type="number">
-    </div>
-    <div class="field">
-        <label for="Customer Segment">Select Segment</label>
-        <select class="ui fluid dropdown" name="Customer Segment" id="segmentSelect">
-            <option value="low_value">Low Value</option>
-            <option value="mid_value">Mid Value</option>
-            <option value="high_value">High Value</option>
-        </select>
-    </div>
-    <div class="field">
-        <label for="Select Action">Select Action</label>
-        <select class="ui fluid dropdown" name="Select Action" id="actionSelect">
-            <option value="rescheduled">Rescheduled</option>
-            <option value="cancelled">Cancelled</option>
-        </select>
-    </div>
-    <div class="field">
-        <label for="Customer Segment">Total</label>
-        <input type="number" id="totalView">
-    </div>
-</form>
-</div>
 
   </main>
-
-  <script>
-
-    $(document).ready(function () {
-      $('.ui.dropdown').dropdown()
-      $('.menu .item').tab();
-      $('#date_calendar').calendar({ type: 'date' });
-      $('#time_calendar').calendar({ type: 'time' });
-      $('.ui.sticky').sticky();
-
-    });
-
-    let clipboard = new ClipboardJS('.btn');
-
-    clipboard.on('success', function (e) {
-      console.info('Action:', e.action);
-      console.info('Text:', e.text);
-      console.info('Trigger:', e.trigger);
-
-      e.clearSelection();
-
-      $('body').toast({
-        message: 'Copied to clipboard!',
-        class: 'blue',
-        showIcon: 'clipboard check',
-        // displayTime: 2000,
-        position: 'top center',
-        transition: {
-          showMethod: 'slide down',
-          showDuration: 100,
-          hideMethod: 'slide down',
-          hideDuration: 500
-        }
-      });
-    });
-
-    clipboard.on('error', function (e) {
-      console.error('Action:', e.action);
-      console.error('Trigger:', e.trigger);
-
-      $('body').toast({
-        message: 'Failed to copy to clipboard',
-        class: 'error',
-        showIcon: 'exclamation triangle',
-        displayTime: 3000,
-        position: 'top center',
-
-        transition: {
-          showMethod: 'slide down',
-          showDuration: 100,
-          hideMethod: 'slide down',
-          hideDuration: 500
-        }
-      });
-
-
-      
-    });
-
-  </script>
 </body>
 
 </html>
