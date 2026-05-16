@@ -48,7 +48,7 @@
     <a class="item active " data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
-    <a class="item" data-tab="compensator">Compensator</a>
+    
     
 </div>
 
@@ -254,90 +254,9 @@
   </tbody>
 </table>
 </div>
-<div class="ui bottom attached tab segment " data-tab="compensator">
-    <h1>Compensator</h1>
 
-<form action="" id="template_form" class="ui mini form">
-    <div class="field">
-        <label for="Customer Segment">Amount</label>
-        <input type="number">
-    </div>
-    <div class="field">
-        <label for="Customer Segment">Select Segment</label>
-        <select class="ui fluid dropdown" name="Customer Segment" id="segmentSelect">
-            <option value="low_value">Low Value</option>
-            <option value="mid_value">Mid Value</option>
-            <option value="high_value">High Value</option>
-        </select>
-    </div>
-    <div class="field">
-        <label for="Select Action">Select Action</label>
-        <select class="ui fluid dropdown" name="Select Action" id="actionSelect">
-            <option value="rescheduled">Rescheduled</option>
-            <option value="cancelled">Cancelled</option>
-        </select>
-    </div>
-    <div class="field">
-        <label for="Customer Segment">Total</label>
-        <input type="number" id="totalView">
-    </div>
-</form>
-</div>
 
   </main>
-
-  <script>
-
-    /*
-    let clipboard = new ClipboardJS('.btn');
-
-    clipboard.on('success', function (e) {
-      console.info('Action:', e.action);
-      console.info('Text:', e.text);
-      console.info('Trigger:', e.trigger);
-
-      e.clearSelection();
-
-      $('body').toast({
-        message: 'Copied to clipboard!',
-        class: 'blue',
-        showIcon: 'clipboard check',
-        // displayTime: 2000,
-        position: 'top center',
-        transition: {
-          showMethod: 'slide down',
-          showDuration: 100,
-          hideMethod: 'slide down',
-          hideDuration: 500
-        }
-      });
-    });
-
-    clipboard.on('error', function (e) {
-      console.error('Action:', e.action);
-      console.error('Trigger:', e.trigger);
-
-      $('body').toast({
-        message: 'Failed to copy to clipboard',
-        class: 'error',
-        showIcon: 'exclamation triangle',
-        displayTime: 3000,
-        position: 'top center',
-
-        transition: {
-          showMethod: 'slide down',
-          showDuration: 100,
-          hideMethod: 'slide down',
-          hideDuration: 500
-        }
-      });
-
-
-      
-    });
-    */
-
-  </script>
 </body>
 
 </html>
