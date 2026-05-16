@@ -1,7 +1,30 @@
 
-<div class="ui inverted menu borderless" style="justify-content: center; border-radius: 0; top: 0; position: sticky; z-index: 1;">
-    <div class="header item">
-        Customblade
+<div class="ui borderless menu navigation_bar">
+    <div class="ui container">
+        <a href="/" class="brand-item">
+            <span class="brand-icon">CB</span>
+            Customblade
+        </a>
+        <nav class="nav-links">
+            <a href="/" class="nav-link" id="nav-home">Home</a>
+            <a href="/controls" class="nav-link" id="nav-controls">Controls</a>
+        </nav>
     </div>
 </div>
 
+<script>
+    // Highlight the active nav link
+    (function () {
+        const path = window.location.pathname.replace(/\/$/, '') || '/';
+        document.querySelectorAll('.nav-link').forEach(function (link) {
+            const href = link.getAttribute('href').replace(/\/$/, '') || '/';
+            if (path === href || (href !== '' && path.startsWith(href + '/'))) {
+                link.classList.add('active-nav');
+            }
+        });
+        // Always mark home if on root
+        if (path === '' || path === '/') {
+            document.getElementById('nav-home').classList.add('active-nav');
+        }
+    })();
+</script>
