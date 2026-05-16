@@ -6,12 +6,12 @@
 
     <div class="field">
       <label>Location:</label>
-      <textarea id="location_value" rows="3" placeholder="Enter Address"></textarea>
+      <textarea id="location_value" name="location_value" rows="3" placeholder="Enter Address"></textarea>
     </div>
 
     <div class="field">
       <label for="service_detail">Service Type</label>
-      <textarea id="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
+      <textarea id="service_detail" name="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
     </div>
   </div>
 
@@ -57,7 +57,7 @@
 
   <div class="two mini ui buttons">
 
-    <button type="button" id="showValueBtn" class="ui button" onClick="showReqValues()">
+    <button type="button" id="showValueBtn" class="ui button" onClick="runShowReqValues()">
       Format
     </button>
     <button type="button" class="ui button negative" onclick="clearForm()">Clear</button>
@@ -75,4 +75,30 @@
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
 
-<script src="/assets/js/requester.js"></script>
+<script defer>
+const requestFormRules = {
+  location_value: {
+    identifier: 'location_value',
+    rules: [{ type: 'empty', prompt: 'Location is required' }]
+  },
+  service_detail: {
+    identifier: 'service_detail',
+    rules: [{ type: 'empty', prompt: 'Service detail is required' }]
+  },
+  date_value: {
+    identifier: 'date_value',
+    rules: [{ type: 'empty', prompt: 'Date is required' }]
+  },
+  time_value: {
+    identifier: 'time_value',
+    rules: [{ type: 'empty', prompt: 'Time is required' }]
+  }
+};
+
+const runShowReqValues = FormValidator.init(
+  'template_request_form',
+  requestFormRules,
+  showReqValues,
+  'showValueBtn'
+);
+</script>

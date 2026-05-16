@@ -28,9 +28,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css">
 
   
-
-  <link rel="stylesheet" href="../../assets/css/global.css">
   <link rel="stylesheet" href="../../assets/css/controls.css">
+  <link rel="stylesheet" href="../../assets/css/formatter.css">
 </head>
 
 <body>
@@ -50,61 +49,56 @@
     <a class="item active " data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
-    <a class="item" data-tab="compensator">Compensator</a>
-    <a class="item" data-tab="callbacks">Callbacks</a>
+    
+    
 </div>
 
 
 <div class="ui bottom attached tab segment active " data-tab="formatter">
-    <link rel="stylesheet" href="css/formatter.css">
-
-<h1>Formatter</h1>
+    <h1>Formatter</h1>
 
 <form action="" id="template_form" class="ui mini form">
 
   
   <div class="field">
     <label for="full_name">Full Name:</label>
-    <input type="text" id="full_name" name="Full Name" />
+    <input type="text" id="full_name" name="Full Name"  required/>
   </div>
 
   
   <div class="field">
     <label for="phone_number">Phone Number:</label>
-    <input type="number" id="phone_number" name="Phone Numberr" />
+    <input type="number" id="phone_number" name="Phone Number" required />
   </div>
 
   <div class="field">
 
     <label for="concern_select">Concern</label>
-    <select class="ui fluid dropdown" name="Concern" id="concern_select">
-      
+    <select class="ui fluid dropdown" name="Concern" id="concern_select" required>
 
-      <option value="" disabled selected>Select an option</option>
-
-      <option value="">Select Concern</option>
+      <option value="" selected>Select Concern</option>
       
       
       
-      <option value="OMT-NA">OMT-NA</option>
+        <option value="OMT-NA">OMT-NA</option>
       
       
       
-      <option value="OMT-DELAY">OMT-DELAY</option>
-      
+        <option value="OMT-DELAY">OMT-DELAY</option>
       
       
       
       
       
       
-      <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
+      
+        <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
       
       
       
       
       
-      <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
+        <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
       
       
     </select>
@@ -113,7 +107,7 @@
 
   <div class="mini two ui buttons" id="button_group">
 
-    <button type="button" id="showValueBtn" class="ui button" onClick="showValues()">
+    <button type="button" id="showValueBtn" class="ui button" onClick="runShowValues()">
       Convert
     </button>
     <button type="button" class="ui button negative" onclick="clearConverterForm()">Clear</button>
@@ -136,6 +130,36 @@
 <button class="ui mini primary button btn" data-clipboard-target="#display_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
+
+
+<script defer>
+  const templateFormRules = {
+  full_name: {
+    identifier: 'full_name',
+    rules: [{ type: 'empty', prompt: 'Full Name is required' }]
+  },
+  phone_number: {
+    identifier: 'phone_number',
+    rules: [
+      { type: 'empty', prompt: 'Phone Number is required' },
+      { type: 'integer', prompt: 'Must be a valid number' }
+    ]
+  },
+  concern_select: {
+    identifier: 'concern_select',
+    rules: [{ type: 'empty', prompt: 'Please select a concern' }]
+  }
+};
+
+// Wire up on page load
+const runShowValues = FormValidator.init(
+  'template_form',
+  templateFormRules,
+  showValues, // your existing function
+  'showvalueBtn'
+);
+</script>
+
 </div>
 <div class="ui bottom attached tab segment " data-tab="requester">
     <h1>Request Formatter</h1>
@@ -256,121 +280,8 @@
   </tbody>
 </table>
 </div>
-<div class="ui bottom attached tab segment " data-tab="compensator">
-    <h1>Compensator</h1>
 
-<form action="" id="template_form" class="ui mini form">
-    <div class="field">
-        <label for="Customer Segment">Amount</label>
-        <input type="number">
-    </div>
-    <div class="field">
-        <label for="Customer Segment">Select Segment</label>
-        <select class="ui fluid dropdown" name="Customer Segment" id="segmentSelect">
-            <option value="low_value">Low Value</option>
-            <option value="mid_value">Mid Value</option>
-            <option value="high_value">High Value</option>
-        </select>
-    </div>
-    <div class="field">
-        <label for="Select Action">Select Action</label>
-        <select class="ui fluid dropdown" name="Select Action" id="actionSelect">
-            <option value="rescheduled">Rescheduled</option>
-            <option value="cancelled">Cancelled</option>
-        </select>
-    </div>
-    <div class="field">
-        <label for="Customer Segment">Total</label>
-        <input type="number" id="totalView">
-    </div>
-</form>
-</div>
-<div class="ui bottom attached tab segment " data-tab="callbacks">
-    <h1>Callbacks</h1>
-<script src="js/callbacks.js" defer></script>
-<style>
-    .timer-item {
-        transition: all 0.3s ease;
-    }
 
-    .timer-item.expired {
-        animation: flash 1s infinite;
-    }
-
-    @keyframes flash {
-
-        0%,
-        50% {
-            background-color: #ff6b6b;
-            color: white;
-        }
-
-        51%,
-        100% {
-            background-color: transparent;
-            color: inherit;
-        }
-    }
-
-    .countdown {
-        font-family: 'Courier New', monospace;
-        font-weight: bold;
-    }
-
-    .custom-time-input {
-        display: none;
-    }
-
-    .custom-time-input.active {
-        display: block;
-    }
-</style>
-<div class="timer-container">
-
-    <form class="ui mini form" id="timerForm">
-        <div class="fields">
-            <div class="four wide field">
-                <label>Reference Number</label>
-                <input type="text" id="refNumber" placeholder="Enter reference number" required>
-            </div>
-            <div class="four wide field">
-                <label>Callback Time</label>
-                <select class="ui dropdown" id="callbackTime">
-                    <option value="5">5 minutes</option>
-                    <option value="10">10 minutes</option>
-                    <option value="60">1 hour</option>
-                    <option value="custom">Custom</option>
-                </select>
-            </div>
-        </div>
-        <div class="field custom-time-input" id="customTimeField">
-            <label>Custom Time</label>
-            <div class="three fields">
-                <div class="field">
-                    <label>Hours</label>
-                    <input type="number" id="customHours" placeholder="0" min="0" value="0">
-                </div>
-                <div class="field">
-                    <label>Minutes</label>
-                    <input type="number" id="customMinutes" placeholder="0" min="0" value="0">
-                </div>
-                <div class="field">
-                    <label>Seconds</label>
-                    <input type="number" id="customSeconds" placeholder="0" min="0" value="0">
-                </div>
-            </div>
-        </div>
-        <button class="ui mini primary button" type="submit">Add Timer</button>
-    </form>
-
-        <h3 class="ui header">Active Timers</h3>
-        <div class="ui mini relaxed list" id="timerList">
-            <div class="item" style="text-align: center; color: #999;">
-                No active timers
-            </div>
-        </div>
-</div>
-</div>
   </main>
 </body>
 
