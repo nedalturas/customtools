@@ -1,46 +1,37 @@
 let clipboard = new ClipboardJS('.btn');
 
-    clipboard.on('success', function (e) {
-      console.info('Action:', e.action);
-      console.info('Text:', e.text);
-      console.info('Trigger:', e.trigger);
+clipboard.on('success', function (e) {
+    e.clearSelection();
 
-      e.clearSelection();
-
-      $('body').toast({
+    $('body').toast({
         message: 'Copied to clipboard!',
-        class: 'blue',
+        class: 'cb-toast cb-toast-success',
         showIcon: 'clipboard check',
-        // displayTime: 2000,
+        displayTime: 2000,
         position: 'top center',
         transition: {
-          showMethod: 'slide down',
-          showDuration: 100,
-          hideMethod: 'slide down',
-          hideDuration: 500
+            showMethod: 'slide down',
+            showDuration: 120,
+            hideMethod: 'slide up',
+            hideDuration: 200
         }
-      });
     });
+});
 
-    clipboard.on('error', function (e) {
-      console.error('Action:', e.action);
-      console.error('Trigger:', e.trigger);
+clipboard.on('error', function (e) {
+    console.error('Action:', e.action);
 
-      $('body').toast({
-        message: 'Failed to copy to clipboard',
-        class: 'error',
+    $('body').toast({
+        message: 'Failed to copy!',
+        class: 'cb-toast cb-toast-error',
         showIcon: 'exclamation triangle',
         displayTime: 3000,
         position: 'top center',
-
         transition: {
-          showMethod: 'slide down',
-          showDuration: 100,
-          hideMethod: 'slide down',
-          hideDuration: 500
+            showMethod: 'slide down',
+            showDuration: 120,
+            hideMethod: 'slide up',
+            hideDuration: 200
         }
-      });
-
-
-      
     });
+});

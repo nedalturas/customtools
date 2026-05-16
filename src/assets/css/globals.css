@@ -1,81 +1,728 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap");
 
+/* ── Reset ─────────────────────────────── */
 * {
-    font-family: "IBM Plex Mono", Courier, monospace !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: var(--dark_3) !important;
-}
-
-body,
-html {
+    font-family: "IBM Plex Mono", "Courier New", monospace !important;
     box-sizing: border-box;
 }
 
-button {
-    border-radius: 0 !important;
+h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
+
+::selection { background: var(--teal-bg); color: var(--teal); }
+
+/* ── Base ───────────────────────────────── */
+html, body { min-height: 100vh; }
+
+body {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
 }
 
+/* ── Scrollbar ──────────────────────────── */
+::-webkit-scrollbar              { width: 4px; height: 4px; }
+::-webkit-scrollbar-track        { background: var(--bg); }
+::-webkit-scrollbar-thumb        { background: var(--border-hi); }
+::-webkit-scrollbar-thumb:hover  { background: var(--text-dim); }
+
+/* ── Navbar ─────────────────────────────── */
 .navigation_bar {
-    background-color: var(--dark_1) !important;
-    justify-content: space-between;
+    background-color: var(--surface) !important;
+    border-bottom: 1px solid var(--border) !important;
     border-radius: 0 !important;
-    top: 0;
     position: sticky;
+    top: 0;
     z-index: 100;
+    box-shadow: none !important;
 }
 
-.header.item {
+.navigation_bar .ui.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+}
+
+.brand-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     color: var(--teal) !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em;
+    text-decoration: none !important;
+    transition: color var(--t);
 }
 
+.brand-item:hover { color: #fff !important; }
+
+.brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--teal);
+    font-size: 0.58rem;
+    font-weight: 600;
+    color: var(--teal);
+    flex-shrink: 0;
+    transition: var(--t);
+}
+
+.brand-item:hover .brand-icon {
+    background: var(--teal-bg);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.nav-link {
+    color: var(--text-dim) !important;
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em;
+    text-decoration: none !important;
+    border: 1px solid transparent !important;
+    transition: var(--t) !important;
+}
+
+.nav-link:hover {
+    color: var(--text) !important;
+    border-color: var(--border-hi) !important;
+}
+
+.nav-link.active-nav {
+    color: var(--teal) !important;
+    border-color: var(--teal-dim) !important;
+}
+
+/* ── Main ───────────────────────────────── */
+main.ui.container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* ── Page heading ───────────────────────── */
+.page-heading {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.page-heading::before { content: '//'; opacity: 0.5; }
+
+.page-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ── Tab menu ───────────────────────────── */
 #tab_menu {
-    background-color: var(--dark_2) !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border) !important;
+    margin-bottom: 0 !important;
 }
 
 #tab_menu .item {
-    outline: none !important;
+    background: transparent !important;
+    color: var(--text-dim) !important;
     border: none !important;
+    border-bottom: 1px solid transparent !important;
+    margin-bottom: -1px !important;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    outline: none !important;
+    transition: color var(--t) !important;
+}
 
-    background-color: var(--dark_1) !important;
+#tab_menu .item:hover { color: var(--text-mid) !important; }
+
+#tab_menu .item.active {
+    color: var(--teal) !important;
+    border-bottom-color: var(--teal) !important;
+    background: transparent !important;
+}
+
+/* ── Segments ───────────────────────────── */
+.segment {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: var(--text) !important;
+    padding: 1.25rem !important;
+    outline: none !important;
+}
+
+.ui.basic.segments { margin: 0 !important; }
+
+.segment label {
+    color: var(--text-dim) !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+}
+
+/* ── Inputs & Textareas ─────────────────── */
+input,
+textarea {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    transition: border-color var(--t) !important;
+    font-size: 0.8rem !important;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--teal) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+input::placeholder,
+textarea::placeholder { color: var(--text-dim) !important; }
+
+/* ── Dropdowns ──────────────────────────── */
+select,
+.ui.dropdown,
+.ui.selection.dropdown {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.ui.dropdown .menu {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.ui.dropdown .menu .item {
+    color: var(--text-mid) !important;
+    border-top: 1px solid var(--border) !important;
+    font-size: 0.75rem !important;
+}
+
+.ui.dropdown .menu .item:hover {
+    background: var(--teal-bg) !important;
     color: var(--teal) !important;
 }
 
-#tab_menu .item.active {
-    border-bottom: 3px solid var(--teal) !important;
-}
-
-.segment {
-    color: white;
-    border: none !important;
-    outline: none !important;
-    background-color: var(--dark_2) !important;
-}
-
-.segment label {
-    color: var(--grey_1) !important;
-}
-
-input,
-textarea {
-    border-radius: 0 !important;
+/* ── Buttons — full override ────────────── */
+/* Nuke Fomantic's background-color entirely on all button variants */
+.ui.button,
+.ui.buttons .button,
+.ui.mini.buttons .button,
+button {
+    background: transparent !important;
     background-color: transparent !important;
-    color: white !important;
-    border: 1px solid var(--grey_1) !important;
+    color: var(--text-mid) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    padding: 0.55rem 1rem !important;
+    cursor: pointer;
+    transition: color var(--t), border-color var(--t), background var(--t) !important;
 }
 
-table {
+.ui.button:hover,
+.ui.buttons .button:hover,
+button:hover {
+    color: var(--text) !important;
+    border-color: var(--text-mid) !important;
+    background: transparent !important;
+    background-color: var(--surface2) !important;
+}
+
+/* Primary / teal-outline (Convert, Format, Add Timer) */
+.ui.primary.button,
+.ui.mini.primary.button,
+.ui.buttons .primary.button {
+    color: var(--teal) !important;
+    border-color: var(--teal-dim) !important;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.ui.primary.button:hover,
+.ui.mini.primary.button:hover,
+.ui.buttons .primary.button:hover {
+    background-color: var(--teal-bg) !important;
+    border-color: var(--teal) !important;
+    color: var(--teal) !important;
+}
+
+/* Default non-primary action buttons (Convert / Format)
+   These have no modifier class so they fall back to the base rule above,
+   but we tint them to teal-outline to match the theme */
+.ui.two.buttons .button:not(.negative):not(.primary),
+.ui.two.mini.buttons .button:not(.negative):not(.primary),
+#button_group .ui.button:not(.negative):not(.primary) {
+    color: var(--teal) !important;
+    border-color: var(--teal-dim) !important;
+}
+
+.ui.two.buttons .button:not(.negative):not(.primary):hover,
+.ui.two.mini.buttons .button:not(.negative):not(.primary):hover,
+#button_group .ui.button:not(.negative):not(.primary):hover {
+    background-color: var(--teal-bg) !important;
+    border-color: var(--teal) !important;
+}
+
+/* Negative → muted red outline */
+.ui.button.negative,
+.ui.negative.button,
+.ui.buttons .negative.button {
+    color: var(--red) !important;
+    border-color: var(--red) !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    opacity: 0.7;
+}
+
+.ui.button.negative:hover,
+.ui.negative.button:hover,
+.ui.buttons .negative.button:hover {
+    background-color: var(--red-bg) !important;
+    opacity: 1;
+}
+
+/* Generic submit buttons */
+button[type="submit"] {
+    color: var(--teal) !important;
+    border-color: var(--teal-dim) !important;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--teal-bg) !important;
+    border-color: var(--teal) !important;
+}
+
+/* ── Tables ─────────────────────────────── */
+table, .ui.table {
     border-radius: 0 !important;
+    box-shadow: none !important;
+    border: 1px solid var(--border) !important;
+}
+
+.ui.inverted.table {
+    background-color: var(--surface) !important;
+}
+
+.ui.inverted.table thead th {
+    background-color: var(--surface2) !important;
+    color: var(--teal) !important;
+    border-bottom: 1px solid var(--border-hi) !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    padding: 0.6rem 0.75rem !important;
+}
+
+.ui.inverted.table tbody tr td {
+    border-top: 1px solid var(--border) !important;
+    color: var(--text) !important;
+    font-size: 0.78rem !important;
+}
+
+.ui.striped.inverted.table tbody tr:nth-child(2n) td {
+    background-color: var(--surface2) !important;
+}
+
+.ui.selectable.inverted.table tbody tr:hover td {
+    background-color: var(--teal-bg) !important;
+    color: var(--teal) !important;
+}
+
+/* ── Checkbox ─── (square, terminal) ────── */
+.ui.checkbox label {
+    color: var(--text-mid) !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    text-transform: none !important;   /* override form label uppercase */
+    padding-left: 1.5em !important;
+    cursor: pointer;
+}
+
+/* The box itself */
+.ui.checkbox label::before {
+    background-color: var(--bg) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    width: 14px !important;
+    height: 14px !important;
+    top: 1px !important;
+}
+
+/* The checkmark */
+.ui.checkbox label::after {
+    color: var(--teal) !important;
+    font-size: 10px !important;
+    top: 1px !important;
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.ui.checkbox input:checked ~ label::before {
+    background-color: var(--bg) !important;
+    border-color: var(--teal) !important;
+}
+
+.ui.checkbox input:focus ~ label::before {
+    border-color: var(--teal) !important;
+}
+
+/* Inline field group label (Today? / Soonest?) */
+.inline.fields > label {
+    color: var(--text-dim) !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    margin-right: 0.4rem !important;
+}
+
+/* ── Toggle switch ───────────────────────── */
+/* The general .ui.checkbox rule above crushes the toggle track to 14×14px.
+   Restore Fomantic's native geometry here, then just recolour. */
+
+/* Track */
+.ui.toggle.checkbox label::before {
+    width: 3.5rem !important;
+    height: 1.5rem !important;
+    border-radius: 500rem !important;   /* pill */
+    border: none !important;
+    top: 0 !important;
+    background-color: #333 !important;
+}
+
+/* Track — checked */
+.ui.toggle.checkbox input:checked ~ label::before {
+    background-color: var(--teal-bg) !important;
+}
+
+/* Thumb */
+.ui.toggle.checkbox label::after {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    border-radius: 500rem !important;   /* circle */
+    top: 0 !important;
+    background-color: #888 !important;
+    box-shadow: none !important;
+}
+
+/* Thumb — checked */
+.ui.toggle.checkbox input:checked ~ label::after {
+    background-color: var(--teal) !important;
+    box-shadow: none !important;
+}
+
+
+/* ── Calendar popup ──────────────────────── */
+.ui.popup.calendar {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: var(--text) !important;
+}
+
+.ui.popup.calendar .ui.table td,
+.ui.popup.calendar .ui.table th {
+    color: var(--text-mid) !important;
+    border-color: var(--border) !important;
+}
+
+.ui.popup.calendar .ui.table td.link:hover {
+    background: var(--teal-bg) !important;
+    color: var(--teal) !important;
+}
+
+.ui.popup.calendar .ui.table td.active {
+    background: var(--teal-bg) !important;
+    color: var(--teal) !important;
+}
+
+/* Calendar icon inside input */
+.ui.input.left.icon > i.icon {
+    color: var(--text-dim) !important;
+}
+
+/* ── Error / prompt messages (Fomantic validation) ── */
+.ui.form .field.error input,
+.ui.form .field.error textarea,
+.ui.form .field.error select {
+    border-color: var(--red) !important;
+    background-color: var(--bg) !important;
+}
+
+.ui.error.message,
+.ui.form .ui.error.message {
+    background-color: var(--red-bg) !important;
+    color: var(--red) !important;
+    border: 1px solid var(--red) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-size: 0.7rem !important;
+}
+
+.ui.error.message .list li::before { color: var(--red) !important; }
+
+/* ── Misc polish ────────────────────────── */
+/* Fomantic blue segment fallback (used on displayReq_value) */
+.ui.blue.segment {
+    border-top: none !important;
+    border-left: 2px solid var(--teal) !important;
+    background-color: var(--bg) !important;
+}
+
+/* Prevent Fomantic from adding white backgrounds on basic segments */
+.ui.basic.segments .segment {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* ═══════════════════════════════════════
+   TOAST NOTIFICATIONS
+   ═══════════════════════════════════════ */
+
+/* Nuke Fomantic's default toast container styles */
+#toast-container .ui.toast-container {
+    box-shadow: none !important;
+}
+
+/* Base toast */
+#toast-container .ui.toast,
+.cb-toast {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: var(--text) !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 0.65rem 1rem !important;
+    min-width: 200px;
+}
+
+/* Success toast — teal left border */
+.cb-toast-success,
+#toast-container .cb-toast-success {
+    border-left: 2px solid var(--teal) !important;
+    background-color: var(--surface) !important;
+}
+
+.cb-toast-success .content .message,
+.cb-toast-success .ui.header {
+    color: var(--teal) !important;
+}
+
+/* Fomantic puts the icon in an i tag next to content */
+.cb-toast-success > i.icon {
+    color: var(--teal) !important;
+}
+
+/* Error toast — red left border */
+.cb-toast-error,
+#toast-container .cb-toast-error {
+    border-left: 2px solid var(--red) !important;
+    background-color: var(--surface) !important;
+}
+
+.cb-toast-error .content .message,
+.cb-toast-error .ui.header {
+    color: var(--red) !important;
+}
+
+.cb-toast-error > i.icon {
+    color: var(--red) !important;
+}
+
+/* Close X button on toast */
+#toast-container .ui.toast .close.icon,
+.cb-toast .close.icon {
+    color: var(--text-dim) !important;
+    opacity: 1 !important;
+}
+
+#toast-container .ui.toast .close.icon:hover,
+.cb-toast .close.icon:hover {
+    color: var(--text) !important;
+}
+
+/* Progress bar at bottom of toast */
+.cb-toast .ui.attached.progress .bar,
+#toast-container .ui.toast .ui.progress .bar {
+    background-color: var(--teal) !important;
+    height: 2px !important;
+}
+
+.cb-toast .ui.attached.progress,
+#toast-container .ui.toast .ui.progress {
+    background-color: var(--border) !important;
+    height: 2px !important;
+    border-radius: 0 !important;
+}
+
+/* ═══════════════════════════════════════
+   CALENDAR / DATE PICKER POPUP
+   ═══════════════════════════════════════ */
+
+/* Popup container */
+.ui.popup.calendar,
+.ui.calendar .ui.popup {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Remove popup arrow */
+.ui.popup.calendar::before,
+.ui.calendar .ui.popup::before {
+    display: none !important;
+}
+
+/* Month/year header row */
+.ui.popup.calendar .ui.table thead tr:first-child th {
+    background-color: var(--surface2) !important;
+    color: var(--teal) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid var(--border-hi) !important;
+    padding: 0.55rem 0.4rem !important;
+}
+
+/* Nav arrows in header */
+.ui.popup.calendar .ui.table thead tr:first-child th:first-child,
+.ui.popup.calendar .ui.table thead tr:first-child th:last-child {
+    color: var(--text-dim) !important;
+    cursor: pointer;
+    transition: color var(--t);
+}
+
+.ui.popup.calendar .ui.table thead tr:first-child th:first-child:hover,
+.ui.popup.calendar .ui.table thead tr:first-child th:last-child:hover {
+    color: var(--teal) !important;
+    background-color: var(--teal-bg) !important;
+}
+
+/* Day-of-week row */
+.ui.popup.calendar .ui.table thead tr:last-child th {
+    background-color: var(--surface2) !important;
+    color: var(--text-dim) !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 0.35rem 0 !important;
+    text-align: center !important;
+}
+
+/* All calendar cells */
+.ui.popup.calendar .ui.table td {
+    background-color: var(--surface) !important;
+    color: var(--text-mid) !important;
+    border: none !important;
+    border-top: 1px solid var(--border) !important;
+    font-size: 0.72rem !important;
+    text-align: center !important;
+    padding: 0.4rem !important;
+    cursor: pointer;
+    transition: background-color var(--t), color var(--t);
+}
+
+/* Hover state */
+.ui.popup.calendar .ui.table td.link:hover {
+    background-color: var(--teal-bg) !important;
+    color: var(--teal) !important;
+}
+
+/* Today highlight */
+.ui.popup.calendar .ui.table td.today {
+    color: var(--teal) !important;
+    font-weight: 600 !important;
+    background-color: transparent !important;
+}
+
+/* Active / selected cell */
+.ui.popup.calendar .ui.table td.active,
+.ui.popup.calendar .ui.table td.active:hover {
+    background-color: var(--teal-bg) !important;
+    color: var(--teal) !important;
+    font-weight: 600 !important;
+}
+
+/* Dimmed cells (prev/next month days) */
+.ui.popup.calendar .ui.table td.disabled,
+.ui.popup.calendar .ui.table td.adjacent {
+    color: var(--text-dim) !important;
+    opacity: 0.4;
+}
+
+/* ── Time picker grid ───────────────────── */
+/* Same popup base applies; override cell sizing for the time grid */
+.ui.popup.calendar .ui.table td.link {
+    min-width: 3.5rem;
+}
+
+/* Scrollbar inside calendar if needed */
+.ui.popup.calendar {
+    overflow: hidden;
+}
+
+/* ═══════════════════════════════════════
+   VALIDATION PROMPT TOOLTIP
+   ═══════════════════════════════════════ */
+
+/* Fomantic renders validation errors as a popup above the field */
+.ui.popup.prompt,
+.ui.pointing.prompt.label {
+    background-color: var(--surface2) !important;
+    border: 1px solid var(--red) !important;
+    border-radius: 0 !important;
+    color: var(--red) !important;
+    box-shadow: none !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.02em !important;
+    padding: 0.4rem 0.7rem !important;
+}
+
+/* The little arrow on the tooltip */
+.ui.popup.prompt::before,
+.ui.pointing.prompt.label::before {
+    background-color: var(--surface2) !important;
+    border-color: var(--red) !important;
+}
+
+/* List inside prompt */
+.ui.popup.prompt .list .item::before,
+.ui.pointing.prompt.label .list .item::before {
+    color: var(--red) !important;
 }

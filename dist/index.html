@@ -42,15 +42,35 @@
 <body>
 
   
-<div class="ui  menu borderless navigation_bar" >
+<div class="ui borderless menu navigation_bar">
     <div class="ui container">
-        <div class="header item">
+        <a href="/" class="brand-item">
+            <span class="brand-icon">CB</span>
             Customblade
-        </div>
+        </a>
+        <nav class="nav-links">
+            <a href="/" class="nav-link" id="nav-home">Home</a>
+            <a href="/controls" class="nav-link" id="nav-controls">Controls</a>
+        </nav>
     </div>
 </div>
 
-
+<script>
+    // Highlight the active nav link
+    (function () {
+        const path = window.location.pathname.replace(/\/$/, '') || '/';
+        document.querySelectorAll('.nav-link').forEach(function (link) {
+            const href = link.getAttribute('href').replace(/\/$/, '') || '/';
+            if (path === href || (href !== '' && path.startsWith(href + '/'))) {
+                link.classList.add('active-nav');
+            }
+        });
+        // Always mark home if on root
+        if (path === '' || path === '/') {
+            document.getElementById('nav-home').classList.add('active-nav');
+        }
+    })();
+</script>
 
 
   <main class="ui container">
@@ -66,7 +86,7 @@
 <div class="segments">
 
 <div class="ui bottom attached tab segment active " data-tab="formatter">
-    <h1>Formatter</h1>
+    <p class="page-heading">Formatter</p>
 
 <form action="" id="template_form" class="ui inverted mini form">
 
@@ -173,7 +193,7 @@ const runShowValues = FormValidator.init(
 
 </div>
 <div class="ui bottom attached tab segment " data-tab="requester">
-    <h1>Request Formatter</h1>
+    <p class="page-heading">Request Formatter</p>
 
 <form action="" id="template_request_form" class="ui mini form">
 
@@ -279,42 +299,43 @@ const runShowReqValues = FormValidator.init(
 </script>
 </div>
 <div class="ui bottom attached tab segment " data-tab="addons">
-    <h1>Addons</h1>
+    <p class="page-heading">Addons</p>
+
 <table class="ui striped selectable small inverted table">
-  <thead>
-    <tr>
-      <th class="four wide">Name</th>
-      <th>Duration</th>
-      <th>Max Unit Purchase</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td data-label="Name">Balcony Cleaning</td>
-      <td data-label="Name">15</td>
-      <td data-label="Name">5</td>
-    </tr>
-    <tr>
-      <td data-label="Name">Cupboard Cleaning</td>
-      <td data-label="Name">45</td>
-      <td data-label="Name">5</td>
-    </tr>
-    <tr>
-      <td data-label="Name">Ironing and Folding</td>
-      <td data-label="Name">30</td>
-      <td data-label="Name">5</td>
-    </tr>
-    <tr>
-      <td data-label="Name">Fridge Cleaning</td>
-      <td data-label="Name">45</td>
-      <td data-label="Name">5</td>
-    </tr>
-    <tr>
-      <td data-label="Name">Wardrobe Cleaning</td>
-      <td data-label="Name">45</td>
-      <td data-label="Name">5</td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th class="four wide">Name</th>
+            <th>Duration (mins)</th>
+            <th>Max Units</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Balcony Cleaning</td>
+            <td>15</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Cupboard Cleaning</td>
+            <td>45</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Ironing and Folding</td>
+            <td>30</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Fridge Cleaning</td>
+            <td>45</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Wardrobe Cleaning</td>
+            <td>45</td>
+            <td>5</td>
+        </tr>
+    </tbody>
 </table>
 </div>
 
