@@ -28,14 +28,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.4/dist/semantic.min.css">
 
   
+
   <link rel="stylesheet" href="../../assets/css/controls.css">
   <link rel="stylesheet" href="../../assets/css/formatter.css">
+
+  
+  
+  <link rel="stylesheet" href="../../assets/css/vars.css">
+  <link rel="stylesheet" href="../../assets/css/globals.css">
+
 </head>
 
 <body>
 
   
-<div class="ui inverted menu borderless" style="justify-content: center; border-radius: 0; top: 0; position: sticky; z-index: 1;">
+<div class="ui  menu borderless navigation_bar" >
     <div class="header item">
         Customblade
     </div>
@@ -45,7 +52,7 @@
 
   <main class="ui container">
     
-<div class="mini ui top attached tabular menu">
+<div class="mini ui top attached tabular menu" id="tab_menu">
     <a class="item active " data-tab="formatter">Formatter</a>
     <a class="item" data-tab="requester">Requester</a>
     <a class="item" data-tab="addons">Addons</a>
@@ -53,14 +60,15 @@
     
 </div>
 
+<div class="segments">
 
 <div class="ui bottom attached tab segment active " data-tab="formatter">
     <h1>Formatter</h1>
 
-<form action="" id="template_form" class="ui mini form">
+<form action="" id="template_form" class="ui inverted mini form">
 
   
-  <div class="field">
+  <div class="ui inverted transparent  field">
     <label for="full_name">Full Name:</label>
     <input type="text" id="full_name" name="Full Name"  required/>
   </div>
@@ -74,7 +82,7 @@
   <div class="field">
 
     <label for="concern_select">Concern</label>
-    <select class="ui fluid dropdown" name="Concern" id="concern_select" required>
+    <select class="ui fluid dropdown inverted" name="Concern" id="concern_select" required>
 
       <option value="" selected>Select Concern</option>
       
@@ -170,12 +178,12 @@ const runShowValues = FormValidator.init(
 
     <div class="field">
       <label>Location:</label>
-      <textarea id="location_value" rows="3" placeholder="Enter Address"></textarea>
+      <textarea id="location_value" name="location_value" rows="3" placeholder="Enter Address"></textarea>
     </div>
 
     <div class="field">
       <label for="service_detail">Service Type</label>
-      <textarea id="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
+      <textarea id="service_detail" name="service_detail" rows="3" placeholder="Enter Service Detail"></textarea>
     </div>
   </div>
 
@@ -221,7 +229,7 @@ const runShowValues = FormValidator.init(
 
   <div class="two mini ui buttons">
 
-    <button type="button" id="showValueBtn" class="ui button" onClick="showReqValues()">
+    <button type="button" id="showValueBtn" class="ui button" onClick="runShowReqValues()">
       Format
     </button>
     <button type="button" class="ui button negative" onclick="clearForm()">Clear</button>
@@ -239,11 +247,37 @@ const runShowValues = FormValidator.init(
   <i class="ui icon clipboard"></i>Copy to Clipboard
 </button>
 
-<script src="/assets/js/requester.js"></script>
+<script defer>
+const requestFormRules = {
+  location_value: {
+    identifier: 'location_value',
+    rules: [{ type: 'empty', prompt: 'Location is required' }]
+  },
+  service_detail: {
+    identifier: 'service_detail',
+    rules: [{ type: 'empty', prompt: 'Service detail is required' }]
+  },
+  date_value: {
+    identifier: 'date_value',
+    rules: [{ type: 'empty', prompt: 'Date is required' }]
+  },
+  time_value: {
+    identifier: 'time_value',
+    rules: [{ type: 'empty', prompt: 'Time is required' }]
+  }
+};
+
+const runShowReqValues = FormValidator.init(
+  'template_request_form',
+  requestFormRules,
+  showReqValues,
+  'showValueBtn'
+);
+</script>
 </div>
 <div class="ui bottom attached tab segment " data-tab="addons">
     <h1>Addons</h1>
-<table class="ui striped selectable small table">
+<table class="ui striped selectable small inverted table">
   <thead>
     <tr>
       <th class="four wide">Name</th>
@@ -281,7 +315,7 @@ const runShowValues = FormValidator.init(
 </table>
 </div>
 
-
+</div>
   </main>
 </body>
 
