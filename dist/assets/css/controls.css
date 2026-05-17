@@ -48,6 +48,7 @@
 /* ── Concern code rows ───────────────── */
 .ui.list .item[data-code-id] {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     padding: 0.55rem 0.75rem;
     margin-bottom: 2px;
@@ -62,7 +63,7 @@
 
 /* Give the toggle wrapper breathing room on the right */
 .ui.list .item[data-code-id] .ui.toggle.checkbox {
-    margin-right: 0.5rem;
+    margin-right: 3.5em;
     flex-shrink: 0;
 }
 
