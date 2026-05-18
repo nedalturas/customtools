@@ -16,7 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 
   
-  <script src="/assets/js/formValidator.js" ></script>
+  
   <script src="/assets/js/formatter.js" ></script>
   <script src="/assets/js/requester.js" ></script>
   <script src="/assets/js/semantic_init.js" defer></script>
@@ -163,8 +163,9 @@
 </button>
 
 
-<script defer>
-  const templateFormRules = {
+<script>
+/*
+const templateFormRules = {
   full_name: {
     identifier: 'full_name',
     rules: [{ type: 'empty', prompt: 'Full Name is required' }]
@@ -182,13 +183,13 @@
   }
 };
 
-// Wire up on page load
 const runShowValues = FormValidator.init(
   'template_form',
   templateFormRules,
-  showValues, // your existing function
+  showValues,   
   'showvalueBtn'
 );
+*/
 </script>
 
 </div>
