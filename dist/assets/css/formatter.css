@@ -1,0 +1,68 @@
+/* ── Form fields ───────────────────────── */
+input[type='text'],
+input[type='number'],
+select {
+    margin-bottom: 0.75em;
+    width: 100%;
+}
+
+/* ── Button group ──────────────────────── */
+#button_group {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+#button_group .ui.button { flex: 1; }
+
+/* ── Output display ────────────────────── */
+#ui_feedback { margin-top: 1rem; }
+
+#ui_feedback .ui.segment {
+    background-color: var(--bg) !important;
+    border-left: 2px solid var(--teal) !important;
+    padding: 0.85rem 1rem !important;
+}
+
+#display_value {
+    margin: 0;
+    padding: 0;
+    white-space: pre-line;
+    line-height: 1.8;
+    color: var(--text) !important;
+    font-size: 0.78rem;
+}
+
+/* ── Clipboard button ──────────────────── */
+.btn[data-clipboard-target] {
+    margin-top: 0.65rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: transparent !important;
+    color: var(--teal) !important;
+    border: 1px solid var(--teal-dim) !important;
+    font-size: 0.64rem !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.4rem 0.85rem !important;
+    transition: var(--t);
+}
+
+.btn[data-clipboard-target]:hover {
+    background: var(--teal-bg) !important;
+    border-color: var(--teal) !important;
+}
+
+/* ── Request formatter output ──────────── */
+#displayReq_value {
+    background-color: var(--bg) !important;
+    border-left: 2px solid var(--teal) !important;
+    padding: 0.85rem 1rem !important;
+    white-space: pre-line;
+    line-height: 1.8;
+    color: var(--text) !important;
+    font-size: 0.78rem;
+    min-height: 2.5rem;
+}

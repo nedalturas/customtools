@@ -1,0 +1,137 @@
+/* ── Spinner ─────────────────────────── */
+.spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--border-hi);
+    border-top: 1px solid var(--teal);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ── Status message ──────────────────── */
+#status-message {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.65rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    border-left: 2px solid transparent;
+}
+
+#status-message.loading {
+    background-color: var(--blue-bg);
+    color: var(--blue);
+    border-left-color: var(--blue);
+}
+
+#status-message.success {
+    background-color: var(--green-bg);
+    color: var(--green);
+    border-left-color: var(--green);
+}
+
+#status-message.error {
+    background-color: var(--red-bg);
+    color: var(--red);
+    border-left-color: var(--red);
+}
+
+/* ── Concern code rows ───────────────── */
+.ui.list .item[data-code-id] {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.55rem 0.75rem;
+    margin-bottom: 2px;
+    background-color: var(--surface2);
+    border: 1px solid var(--border);
+    transition: border-color var(--t);
+}
+
+.ui.list .item[data-code-id]:hover {
+    border-color: var(--border-hi);
+}
+
+/* Give the toggle wrapper breathing room on the right */
+.ui.list .item[data-code-id] .ui.toggle.checkbox {
+    margin-right: 3.5em;
+    flex-shrink: 0;
+}
+
+
+.ui.list .item[data-code-id] .content {
+    flex: 1;
+}
+
+.ui.list .item[data-code-id] .header {
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* ── Add label form ──────────────────── */
+#add-label-form {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 0.85rem;
+}
+
+#add-label-form label { display: none; }
+
+#new-label {
+    flex: 1;
+    height: 2.4rem;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    border-right: none !important;
+    box-sizing: border-box;
+}
+
+#submit-btn {
+    height: 2.4rem !important;
+    padding: 0 1.1rem !important;
+    background: transparent !important;
+    color: var(--teal) !important;
+    border: 1px solid var(--teal-dim) !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    transition: var(--t);
+}
+
+#submit-btn:hover {
+    background: var(--teal-bg) !important;
+    border-color: var(--teal) !important;
+}
+
+/* ── Hint message ────────────────────── */
+.ui.tiny.message {
+    background-color: var(--surface2) !important;
+    color: var(--text-dim) !important;
+    border: 1px solid var(--border) !important;
+    border-left: 2px solid var(--border-hi) !important;
+    border-radius: 0 !important;
+    font-size: 0.68rem !important;
+    box-shadow: none !important;
+    margin-top: 0.85rem !important;
+    line-height: 1.75;
+    padding: 0.6rem 0.85rem !important;
+}
+
+.ui.tiny.message strong { color: var(--text-mid) !important; }
+.ui.tiny.message code   { color: var(--teal) !important; font-size: 0.66rem; }
