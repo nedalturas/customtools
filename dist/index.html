@@ -16,7 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 
   
-  
+  <script src="/assets/js/formValidator.js" ></script>
   <script src="/assets/js/formatter.js" ></script>
   <script src="/assets/js/requester.js" ></script>
   <script src="/assets/js/semantic_init.js" defer></script>
@@ -93,7 +93,7 @@
   
   <div class="ui inverted transparent  field">
     <label for="full_name">Full Name:</label>
-    <input type="text" id="full_name" name="Full Name"  required/>
+    <input type="text" id="full_name" name="Full Name" required />
   </div>
 
   
@@ -108,32 +108,32 @@
     <select class="ui fluid dropdown inverted" name="Concern" id="concern_select" required>
 
       <option value="" selected>Select Concern</option>
+
+      
+      
+      <option value="OMT-NA">OMT-NA</option>
       
       
       
-        <option value="OMT-NA">OMT-NA</option>
-      
-      
-      
-        <option value="OMT-DELAY">OMT-DELAY</option>
-      
-      
-      
-      
-      
-      
-      
-        <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
+      <option value="OMT-DELAY">OMT-DELAY</option>
       
       
       
       
       
-        <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
+      
+      
+      <option value="OMT-NA-MDSC">OMT-NA-MDSC</option>
       
       
       
-        <option value="DA">DA</option>
+      
+      
+      <option value="OMT-NA-PACKAGE">OMT-NA-PACKAGE</option>
+      
+      
+      
+      <option value="DA">DA</option>
       
       
     </select>
@@ -164,11 +164,11 @@
 
 <button class="ui mini primary button btn" data-clipboard-target="#display_value">
   <i class="ui icon clipboard"></i>Copy to Clipboard
+
 </button>
 
 
 <script defer>
-  /*
   const templateFormRules = {
   full_name: {
     identifier: 'full_name',
@@ -194,7 +194,6 @@ const runShowValues = FormValidator.init(
   'showvalueBtn'
 );
 
-*/
 </script>
 </div>
 <div class="ui bottom attached tab segment " data-tab="requester">
