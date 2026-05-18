@@ -27,7 +27,7 @@
     {
         "id": "6",
         "label": "OMT-NA-PACKAGAE",
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "7",
