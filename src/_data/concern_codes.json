@@ -43,5 +43,10 @@
         "id": "9",
         "label": "OMT-Rezoning",
         "disabled": false
+    },
+    {
+        "id": "10",
+        "label": "OMT-EXCL TASK",
+        "disabled": false
     }
 ]
