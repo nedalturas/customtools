@@ -42,7 +42,7 @@
     {
         "id": "9",
         "label": "OMT-Rezoning",
-        "disabled": false
+        "disabled": true
     },
     {
         "id": "10",
